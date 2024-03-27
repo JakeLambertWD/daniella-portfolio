@@ -2,8 +2,9 @@
 
 import { AppShell, Burger } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { LandingPage } from "./LandingPage";
 
-export default function Home() {
+function Home() {
   const [opened, { toggle }] = useDisclosure();
 
   return (
@@ -23,7 +24,10 @@ export default function Home() {
 
       <AppShell.Navbar p="md">Navbar</AppShell.Navbar>
 
-      <AppShell.Main>Main</AppShell.Main>
+      <AppShell.Main>
+        <LandingPage />
+      </AppShell.Main>
     </AppShell>
   );
 }
+export default Home;
