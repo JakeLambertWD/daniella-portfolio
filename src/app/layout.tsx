@@ -6,6 +6,8 @@ import NavigationBar from "./NavigationBar";
 
 const theme = createTheme({
   /** Put your mantine theme override here */
+  white: "#fff8ff",
+  black: "#212121",
 });
 
 const montserrat = Roboto_Condensed({ subsets: ["greek"], weight: ["400"] });
