@@ -3,6 +3,7 @@ import { ColorSchemeScript, createTheme, MantineProvider } from "@mantine/core";
 import { Roboto_Condensed } from "next/font/google";
 import "@mantine/core/styles.css";
 import NavigationBar from "./NavigationBar";
+import SocialMediaLinks from "./SocialMediaLinks";
 
 const theme = createTheme({
   /** Put your mantine theme override here */
@@ -30,6 +31,7 @@ export default function RootLayout({
       <body className={montserrat.className} style={{ padding: "0px 20px 0 20px" }}>
         <MantineProvider theme={theme}>
           <NavigationBar />
+          <SocialMediaLinks />
           {children}
         </MantineProvider>
       </body>
