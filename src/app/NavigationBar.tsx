@@ -29,7 +29,7 @@ function NavigationBar() {
               w="auto"
               px="xl"
               tt="uppercase"
-              c={pathname === link.href ? "#2A9891" : "black"}
+              c={pathname === link.href ? "#204E4A" : "black"}
               style={{ letterSpacing: "3px" }}
             />
           ))}
