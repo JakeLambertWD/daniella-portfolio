@@ -28,44 +28,44 @@ function page() {
           borderTop: "8px solid #fff8ff",
           borderBottom: "8px solid #fff8ff",
           padding: "0 4px 8px 4px",
-          maxWidth: "1500px",
+          maxWidth: "1200px",
           background: "#fff8ff",
           marginBottom: "70px",
           marginRight: "20px",
           marginLeft: "20px",
         }}
       >
-        <div style={{ flex: "25%", maxWidth: "25%", padding: "0 4px" }}>
-          <Image src="/pic3.jpg" alt="alt" style={{ width: "100%", verticalAlign: "middle" }} />
+        <div style={{ flex: "33.3%", maxWidth: "33.3%", padding: "0 4px" }}>
+          <Image src="/pic15.jpg" alt="alt" style={{ width: "100%", verticalAlign: "middle" }} />
           <Image src="/pic1.jpg" alt="alt" style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }} />
+          <Image src="/pic3.jpg" alt="alt" style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }} />
           <Image src="/pic2.jpg" alt="alt" style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }} />
           <Image src="/pic4.jpg" alt="alt" style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }} />
           <Image src="/pic20.jpg" alt="alt" style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }} />
+          <Image src="/pic13.jpg" alt="alt" style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }} />
         </div>
 
-        <div style={{ flex: "25%", maxWidth: "25%", padding: "0 4px" }}>
+        <div style={{ flex: "33.3%", maxWidth: "33.3%", padding: "0 4px" }}>
           <Image src="/pic5.jpg" alt="alt" style={{ width: "100%", verticalAlign: "middle" }} />
           <Image src="/pic6.jpg" alt="alt" style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }} />
           <Image src="/pic7.jpg" alt="alt" style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }} />
           <Image src="/pic8.jpg" alt="alt" style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }} />
           <Image src="/pic19.jpg" alt="alt" style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }} />
+          <Image src="/pic14.jpg" alt="alt" style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }} />
+          <Image src="/pic16.jpg" alt="alt" style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }} />
         </div>
 
-        <div style={{ flex: "25%", maxWidth: "25%", padding: "0 4px" }}>
+        <div style={{ flex: "33.3%", maxWidth: "33.3%", padding: "0 4px" }}>
           <Image src="/pic10.jpg" alt="alt" style={{ width: "100%", verticalAlign: "middle" }} />
           <Image src="/pic9.jpg" alt="alt" style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }} />
           <Image src="/pic11.jpg" alt="alt" style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }} />
           <Image src="/pic12.jpg" alt="alt" style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }} />
           <Image src="/pic18.jpg" alt="alt" style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }} />
+          <Image src="/pic17.jpg" alt="alt" style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }} />
+          <Image src="/pic21.jpg" alt="alt" style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }} />
         </div>
 
-        <div style={{ flex: "25%", maxWidth: "25%", padding: "0 4px" }}>
-          <Image src="/pic15.jpg" alt="alt" style={{ width: "100%", verticalAlign: "middle" }} />
-          <Image src="/pic13.jpg" alt="alt" style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }} />
-          <Image src="/pic14.jpg" alt="alt" style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }} />
-          <Image src="/pic16.jpg" alt="alt" style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }} />
-          <Image src="/pic17.jpg" alt="alt" style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }} />
-        </div>
+        <div style={{ flex: "25%", maxWidth: "25%", padding: "0 4px" }}></div>
       </div>
     </Stack>
   );
