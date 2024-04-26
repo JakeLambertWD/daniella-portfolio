@@ -1,13 +1,10 @@
 {
-    "cssVariables.lookupFiles": [
-      "**/*.css",
-      "**/*.scss",
-      "**/*.sass",
-      "**/*.less",
-      "node_modules/@mantine/core/styles.css"
-    ],
-    "cSpell.words": [
-        "Daniella",
-        "Mantine"
-    ]
-  }
+  "cssVariables.lookupFiles": [
+    "**/*.css",
+    "**/*.scss",
+    "**/*.sass",
+    "**/*.less",
+    "node_modules/@mantine/core/styles.css"
+  ],
+  "cSpell.words": ["Daniella", "Garson", "Mantine"]
+}

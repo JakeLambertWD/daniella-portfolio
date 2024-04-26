@@ -5,6 +5,10 @@ import { usePathname } from "next/navigation";
 import { navigationLinks } from "@/utils/constants";
 import DropdownMenu from "./DropdownMenu";
 import Link from "next/link";
+import { WindSong } from "next/font/google";
+// Monsieur La Doulaise
+
+const monsieurLaDoulaise = WindSong({ subsets: ["latin"], weight: ["400"] });
 
 function NavigationBar() {
   const pathname = usePathname();
@@ -13,8 +17,12 @@ function NavigationBar() {
     <Center py="md">
       <Flex w={1250} justify="space-between">
         <Text>
-          <Link href="/" style={{ textDecoration: "none", color: "black" }}>
-            Logo
+          <Link
+            href="/"
+            style={{ textDecoration: "none", color: "#204E4A", fontSize: "30px" }}
+            className={monsieurLaDoulaise.className}
+          >
+            Daniella Garson
           </Link>
         </Text>
 

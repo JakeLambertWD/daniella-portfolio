@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ColorSchemeScript, createTheme, MantineProvider } from "@mantine/core";
 import { Roboto_Condensed } from "next/font/google";
+
 import "@mantine/core/styles.css";
 import NavigationBar from "./NavigationBar";
 import SocialMediaLinks from "./SocialMediaLinks";
