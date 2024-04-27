@@ -7,6 +7,8 @@ import "@mantine/core/styles.css";
 import NavigationBar from "./NavigationBar";
 import SocialMediaLinks from "./SocialMediaLinks";
 
+// TODO: Send her an invitation link. Once clicked, she will be greeted with fireworks and a happy birthday message and a clcik to enter button that will take her to the main page.
+// TODO: greet her with a romantic message
 // TODO: take colors from coolers.co with named colors - persian pink & carolina blue
 const theme = createTheme({
   /** Put your mantine theme override here */
