@@ -14,7 +14,7 @@ function page() {
   // TODO: reduce column count on small screens
 
   return (
-    <Stack align="center" mb={20} bg="#204E4A">
+    <Stack align="center" mb={20} bg="#7cafc4">
       <Text fz={{ base: "32px", md: "54px" }} my={{ base: "sm", md: "xl" }} c="white">
         PORTFOLIO
       </Text>
