@@ -17,9 +17,10 @@ function NavigationBar() {
     <Center py="md">
       <Flex w={1250} justify="space-between">
         <Text>
+          {/* TODO: Upgrade logo */}
           <Link
             href="/"
-            style={{ textDecoration: "none", color: "#204E4A", fontSize: "30px" }}
+            style={{ textDecoration: "none", color: "black", fontSize: "30px" }}
             className={monsieurLaDoulaise.className}
           >
             Daniella Garson
@@ -27,6 +28,7 @@ function NavigationBar() {
         </Text>
 
         <Flex visibleFrom="sm">
+          {/* TODO: make active and hover colors correct */}
           {navigationLinks.map((link, linkIndex) => (
             <NavLink
               key={linkIndex}
@@ -37,8 +39,8 @@ function NavigationBar() {
               w="auto"
               px="xl"
               tt="uppercase"
-              c={pathname === link.href ? "#204E4A" : "black"}
-              style={{ letterSpacing: "3px" }}
+              c={pathname === link.href ? "#c297b8" : "black"}
+              style={{ letterSpacing: "3px", borderBottom: pathname === link.href ? "3px solid #c297b8" : "none" }}
             />
           ))}
         </Flex>

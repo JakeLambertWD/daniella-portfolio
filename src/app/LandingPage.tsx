@@ -6,7 +6,7 @@ import Link from "next/link";
 function LandingPage() {
   return (
     <div>
-      <Flex w={{ base: "100%", md: "900px" }} h={"calc(100vh - 92.8px)"} bg="#e76f51" style={{ float: "right" }}></Flex>
+      <Flex w={{ base: "100%", md: "900px" }} h={"calc(100vh - 92.8px)"} bg="#c297b8" style={{ float: "right" }}></Flex>
 
       <Center
         bg="white"

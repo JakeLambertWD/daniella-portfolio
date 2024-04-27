@@ -1,5 +1,6 @@
 export const navigationLinks = [
-  { href: "/gallery", label: "Gallery" },
+  { href: "/portfolio", label: "Portfolio" },
+  { href: "/services", label: "Services" },
   { href: "/bio", label: "Bio" },
   { href: "/contact", label: "Contact" },
   { href: "/case-studies", label: "Case Studies" },
