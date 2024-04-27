@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ColorSchemeScript, createTheme, MantineProvider } from "@mantine/core";
+import "@mantine/carousel/styles.css";
 import { Roboto_Condensed } from "next/font/google";
 
 import "@mantine/core/styles.css";

@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@mantine/carousel':
+    specifier: ^7.8.1
+    version: 7.8.1(@mantine/core@7.6.2)(@mantine/hooks@7.6.2)(embla-carousel-react@7.1.0)(react-dom@18.2.0)(react@18.2.0)
   '@mantine/core':
     specifier: ^7.6.2
     version: 7.6.2(@mantine/hooks@7.6.2)(@types/react@18.2.67)(react-dom@18.2.0)(react@18.2.0)
@@ -14,6 +17,12 @@ dependencies:
   '@tabler/icons-react':
     specifier: ^3.1.0
     version: 3.1.0(react@18.2.0)
+  embla-carousel-autoplay:
+    specifier: ^7.1.0
+    version: 7.1.0(embla-carousel@7.1.0)
+  embla-carousel-react:
+    specifier: ^7.1.0
+    version: 7.1.0(react@18.2.0)
   next:
     specifier: 14.1.4
     version: 14.1.4(react-dom@18.2.0)(react@18.2.0)
@@ -178,6 +187,22 @@ packages:
       wrap-ansi: 8.1.0
       wrap-ansi-cjs: /wrap-ansi@7.0.0
     dev: true
+
+  /@mantine/carousel@7.8.1(@mantine/core@7.6.2)(@mantine/hooks@7.6.2)(embla-carousel-react@7.1.0)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-l+DOvh7ofb7yc+ZkSICujSw0/CukEWP09j4axI+7k3egKbHLc1fBNHSrTLurfsqXKsfhS6GNe6VLGxKizbkJRw==}
+    peerDependencies:
+      '@mantine/core': 7.8.1
+      '@mantine/hooks': 7.8.1
+      embla-carousel-react: '>=7.0.0'
+      react: ^18.2.0
+      react-dom: ^18.2.0
+    dependencies:
+      '@mantine/core': 7.6.2(@mantine/hooks@7.6.2)(@types/react@18.2.67)(react-dom@18.2.0)(react@18.2.0)
+      '@mantine/hooks': 7.6.2(react@18.2.0)
+      embla-carousel-react: 7.1.0(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
 
   /@mantine/core@7.6.2(@mantine/hooks@7.6.2)(@types/react@18.2.67)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-qmZhmQVc7ZZ8EKKhPkGuZbfBnLXR0xE45ikxfx+1E6/8hLY5Ypr4nWqh5Pk6p3b+K71yYnBqlbNXbtHLQH0h3g==}
@@ -840,6 +865,27 @@ packages:
   /eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
+
+  /embla-carousel-autoplay@7.1.0(embla-carousel@7.1.0):
+    resolution: {integrity: sha512-nYfgSGn3ek44OzwO0t/Ptuxq4PNPD5l7Y9X7JjLYI/DN1uGjqxz9L73YYqR6YCRDnTYJ88s9fep48dzBnSG4vQ==}
+    peerDependencies:
+      embla-carousel: 7.1.0
+    dependencies:
+      embla-carousel: 7.1.0
+    dev: false
+
+  /embla-carousel-react@7.1.0(react@18.2.0):
+    resolution: {integrity: sha512-tbYRPRZSDNd2QLNqYDcArAakGIxtUbhS7tkP0dGXktXHGgcX+3ji3VrOUTOftBiujZrMV8kRxtrRUe/1soloIQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.1 || ^18.0.0
+    dependencies:
+      embla-carousel: 7.1.0
+      react: 18.2.0
+    dev: false
+
+  /embla-carousel@7.1.0:
+    resolution: {integrity: sha512-Bh8Pa8NWzgugLkf8sAGexQlBCNDFaej5BXiKgQdRJ1mUC9NWBrw9Z23YVPVGkguWoz5LMjZXXFVGCobl3UPt/Q==}
+    dev: false
 
   /emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
