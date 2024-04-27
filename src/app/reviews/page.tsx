@@ -56,7 +56,7 @@ function Page() {
                 radius="md"
                 iconSize={57}
                 icon={icon}
-                cite={`– ${review.name}`}
+                cite={`| ${review.name} |`}
                 mt="xl"
                 ta="center"
                 style={{ lineHeight: "1.7" }}
