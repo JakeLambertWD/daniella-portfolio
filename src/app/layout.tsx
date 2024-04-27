@@ -6,6 +6,7 @@ import "@mantine/core/styles.css";
 import NavigationBar from "./NavigationBar";
 import SocialMediaLinks from "./SocialMediaLinks";
 
+// TODO: take colors from coolers.co with named colors - persian pink & carolina blue
 const theme = createTheme({
   /** Put your mantine theme override here */
   white: "#fff8ff",
