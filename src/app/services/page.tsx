@@ -2,6 +2,7 @@
 
 import { Card, Flex, Group, Image, ScrollArea, Text, Title } from "@mantine/core";
 import { Bodoni_Moda } from "next/font/google";
+import Heading from "../components/Heading";
 
 const bodoniModa = Bodoni_Moda({ subsets: ["latin"], weight: ["400"] });
 
@@ -32,47 +33,36 @@ function page() {
   ];
 
   return (
-    <Flex h={"calc(100vh - 92.8px)"} bg="#e76f51" pos="relative" justify="center" align="center">
-      <Text
-        fz={{ base: "32px", md: "54px" }}
-        my={{ base: "sm", md: "xl" }}
-        w="100%"
-        ta="center"
-        c="white"
-        pos="absolute"
-        top={3}
-      >
-        SERVICES
-      </Text>
+    <Flex h={"calc(100vh - 92.8px)"} direction="column" align="center" bg="#e76f51">
+      <Heading title="SERVICES" />
 
-      {/* <Flex justify="center" align="center" gap="xl" w={500} bg="blue" style={{ overflowX: "auto" }}> */}
-
-      <ScrollArea scrollbarSize={10} w="100%" px="lg">
-        <Group justify="center" wrap="nowrap">
-          {servicesData.map(({ id, title, description, image }) => (
-            <Card
-              key={id}
-              className={bodoniModa.className}
-              shadow="xl"
-              padding="sm"
-              radius="xs"
-              withBorder={false}
-              h="600px"
-              w={350}
-              ta="center"
-            >
-              <Flex mb={20}>
-                <Image src={image} height="100%" alt="Picture of the author" />
-              </Flex>
-              <Title order={2} className={bodoniModa.className} mb="md">
-                {title}
-              </Title>
-              <Text px="md">{description}</Text>
-            </Card>
-          ))}
-        </Group>
-      </ScrollArea>
-      {/* </Flex> */}
+      <Flex justify="center" align="center" w="100%" mt="md" style={{ overflowX: "auto" }}>
+        <ScrollArea scrollbarSize={10} w="100%" px="lg">
+          <Group justify="center" wrap="nowrap">
+            {servicesData.map(({ id, title, description, image }) => (
+              <Card
+                key={id}
+                className={bodoniModa.className}
+                shadow="xl"
+                padding="sm"
+                radius="xs"
+                withBorder={false}
+                h="600px"
+                w={350}
+                ta="center"
+              >
+                <Flex mb={20}>
+                  <Image src={image} height="100%" alt="Picture of the author" />
+                </Flex>
+                <Title order={2} className={bodoniModa.className} mb="md">
+                  {title}
+                </Title>
+                <Text px="md">{description}</Text>
+              </Card>
+            ))}
+          </Group>
+        </ScrollArea>
+      </Flex>
     </Flex>
   );
 }

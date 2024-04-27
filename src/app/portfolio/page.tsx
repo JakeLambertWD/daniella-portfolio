@@ -1,7 +1,7 @@
 "use client";
 
-import { Center, Image, Stack, Text, Title } from "@mantine/core";
-import image from "../../../public/pic1.jpg";
+import { Image, Stack } from "@mantine/core";
+import Heading from "../components/Heading";
 
 function page() {
   // TODO: import images from instagram??
@@ -12,12 +12,11 @@ function page() {
   // TODO: add lazy loading to images
   // TODO: add infinite scroll to images
   // TODO: reduce column count on small screens
+  // TODO: Split gallery into a grid with sub sections for each category
 
   return (
     <Stack align="center" mb={20} bg="#7cafc4">
-      <Text fz={{ base: "32px", md: "54px" }} my={{ base: "sm", md: "xl" }} c="white">
-        PORTFOLIO
-      </Text>
+      <Heading title="PORTFOLIO" />
 
       <div
         style={{
@@ -33,6 +32,7 @@ function page() {
           marginBottom: "70px",
           marginRight: "20px",
           marginLeft: "20px",
+          scrollbarWidth: "none",
         }}
       >
         <div style={{ flex: "33.3%", maxWidth: "33.3%", padding: "0 4px" }}>
