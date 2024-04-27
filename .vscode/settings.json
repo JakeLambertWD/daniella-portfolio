@@ -6,5 +6,11 @@
     "**/*.less",
     "node_modules/@mantine/core/styles.css"
   ],
-  "cSpell.words": ["Daniella", "Garson", "Mantine"]
+  "cSpell.words": [
+    "Daniella",
+    "Garson",
+    "Mantine",
+    "Moda",
+    "webp"
+  ]
 }
