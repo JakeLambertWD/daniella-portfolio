@@ -6,11 +6,11 @@ import { Carousel } from "@mantine/carousel";
 import { Center } from "@mantine/core";
 import { Blockquote } from "@mantine/core";
 import { IconChevronRight, IconChevronLeft } from "@tabler/icons-react";
-import { Sora } from "next/font/google";
 import classes from "./reviews.module.css";
+import { Sora } from "next/font/google";
 
-// TODO: Make fonts across the app consistent
 const sora = Sora({ subsets: ["latin"], weight: ["200"] });
+// TODO: Make fonts across the app consistent
 
 function Reviews() {
   const autoplay = useRef(Autoplay({ delay: 3000 }));
