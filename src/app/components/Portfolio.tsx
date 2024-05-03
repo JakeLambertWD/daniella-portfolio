@@ -1,9 +1,11 @@
 "use client";
 
-import { Image, Stack } from "@mantine/core";
+import { Image, Stack, useMantineTheme } from "@mantine/core";
 import Heading from "./Heading";
 
 function Portfolio() {
+  const theme = useMantineTheme();
+
   // TODO: import images from instagram??
   // TODO: decrease padding between images on small screens
   // TODO: add hover effect to images
@@ -16,7 +18,7 @@ function Portfolio() {
   // TODO: Discuss with her, does she want pics displayed from insta or from her phone?
 
   return (
-    <Stack align="center" mb={20} bg="rgba(216, 182, 182)">
+    <Stack align="center" mb={20} bg={theme.colors.persianPink[0]}>
       <Heading title="PORTFOLIO" />
 
       <div

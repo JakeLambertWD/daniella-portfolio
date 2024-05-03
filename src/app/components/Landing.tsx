@@ -1,15 +1,18 @@
-import { Center, Flex, Group, Text } from "@mantine/core";
+"use client";
+
+import { Center, Flex, Group, Text, useMantineTheme } from "@mantine/core";
 import Image from "next/image";
 import { IconArrowNarrowRight } from "@tabler/icons-react";
 import Link from "next/link";
-
 function Landing() {
+  const theme = useMantineTheme();
+
   return (
     <div style={{ height: "calc(100vh - 92.8px)" }}>
       <Flex
         w={{ base: "100%", md: "900px" }}
         h={"calc(100vh - 105px)"}
-        bg="rgba(216, 182, 182)"
+        bg={theme.colors.persianPink[0]}
         style={{ float: "right" }}
       ></Flex>
       <Center

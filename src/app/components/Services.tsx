@@ -1,12 +1,14 @@
 "use client";
 
-import { Card, Flex, Group, Image, ScrollArea, Text, Title } from "@mantine/core";
+import { Card, Flex, Group, Image, ScrollArea, Text, Title, useMantineTheme } from "@mantine/core";
 import Heading from "./Heading";
 import { Bodoni_Moda } from "next/font/google";
 
 const bodoniModa = Bodoni_Moda({ subsets: ["latin"], weight: ["400"] });
 
 function Services() {
+  const theme = useMantineTheme();
+
   // TODO: Replace the images with my own
   const servicesData = [
     {
@@ -33,7 +35,7 @@ function Services() {
   ];
 
   return (
-    <Flex h={"calc(100vh - 92.8px)"} direction="column" align="center" bg="rgba(216, 182, 182)">
+    <Flex h={"calc(100vh - 92.8px)"} direction="column" align="center" bg={theme.colors.persianPink[0]}>
       <Heading title="SERVICES" />
 
       <Flex justify="center" align="center" w="100%" mt="md" style={{ overflowX: "auto" }}>
