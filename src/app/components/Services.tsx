@@ -1,8 +1,8 @@
 "use client";
 
 import { Card, Flex, Group, Image, ScrollArea, Text, Title } from "@mantine/core";
-import { Bodoni_Moda } from "next/font/google";
 import Heading from "./Heading";
+import { Bodoni_Moda } from "next/font/google";
 
 const bodoniModa = Bodoni_Moda({ subsets: ["latin"], weight: ["400"] });
 
