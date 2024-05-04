@@ -3,6 +3,7 @@
 import { Card, Flex, Group, Image, ScrollArea, Text, Title, useMantineTheme } from "@mantine/core";
 import Heading from "./Heading";
 import { Bodoni_Moda } from "next/font/google";
+import { motion } from "framer-motion";
 
 const bodoniModa = Bodoni_Moda({ subsets: ["latin"], weight: ["400"] });
 
@@ -47,28 +48,35 @@ function Services(props: any) {
 
       <Flex justify="center" align="center" w="100%" mt="md" style={{ overflowX: "auto" }}>
         <ScrollArea scrollbarSize={10} w="100%" px="lg">
-          <Group justify="center" wrap="nowrap">
-            {servicesData.map(({ id, title, description, image }) => (
-              // TODO: Add shadow and hover animation to card
-              <Card
+          <Group justify="center" wrap="nowrap" py="xs">
+            {servicesData.map(({ id, title, description, image }, i) => (
+              <motion.div
                 key={id}
-                className={bodoniModa.className}
-                shadow="xl"
-                padding="sm"
-                radius="xs"
-                withBorder={false}
-                h="600px"
-                w={350}
-                ta="center"
+                whileHover={{ scale: 1.02 }}
+                initial={{ opacity: 0, translateX: 200 }}
+                whileInView={{ opacity: 1, translateX: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5, delay: i * 0.4 }}
               >
-                <Flex mb={20}>
-                  <Image src={image} height="100%" alt="Picture of the author" />
-                </Flex>
-                <Title order={2} className={bodoniModa.className} mb="md">
-                  {title}
-                </Title>
-                <Text px="md">{description}</Text>
-              </Card>
+                <Card
+                  className={bodoniModa.className}
+                  shadow="xl"
+                  padding="sm"
+                  radius="xs"
+                  withBorder={false}
+                  h="600px"
+                  w={350}
+                  ta="center"
+                >
+                  <Flex mb={20}>
+                    <Image src={image} height="100%" alt="Picture of the author" />
+                  </Flex>
+                  <Title order={2} className={bodoniModa.className} mb="md">
+                    {title}
+                  </Title>
+                  <Text px="md">{description}</Text>
+                </Card>
+              </motion.div>
             ))}
           </Group>
         </ScrollArea>
