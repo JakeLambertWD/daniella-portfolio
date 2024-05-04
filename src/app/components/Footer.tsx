@@ -1,6 +1,7 @@
+"use client";
+
 import { Center, Flex, Stack, Text, useMantineTheme } from "@mantine/core";
 import { IconBrandFacebook, IconBrandInstagram } from "@tabler/icons-react";
-import React from "react";
 
 function Footer() {
   const theme = useMantineTheme();

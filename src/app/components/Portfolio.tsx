@@ -3,7 +3,7 @@
 import { Image, Stack, useMantineTheme } from "@mantine/core";
 import Heading from "./Heading";
 
-function Portfolio() {
+function Portfolio(props: any) {
   const theme = useMantineTheme();
 
   // TODO: import images from instagram??
@@ -18,7 +18,7 @@ function Portfolio() {
   // TODO: Discuss with her, does she want pics displayed from insta or from her phone?
 
   return (
-    <Stack align="center" mb={20} bg={theme.colors.persianPink[0]}>
+    <Stack id="portfolioId" ref={props.portfolioRef} align="center" mb={20} bg={theme.colors.persianPink[0]}>
       <Heading title="PORTFOLIO" />
 
       <div

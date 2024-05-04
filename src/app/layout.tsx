@@ -19,8 +19,8 @@ export const theme = createTheme({
   black: "#212121",
 
   colors: {
-    carolinaBlue: [
-      "#56A3A6",
+    persianPink: [
+      "#d8b6b6",
       "#000000",
       "#000000",
       "#000000",
@@ -31,8 +31,8 @@ export const theme = createTheme({
       "#000000",
       "#000000",
     ],
-    persianPink: [
-      "#d8b6b6",
+    carolinaBlue: [
+      "#56A3A6",
       "#000000",
       "#000000",
       "#000000",
@@ -65,7 +65,7 @@ export default function RootLayout({
       </head>
       <body className={montserrat.className}>
         <MantineProvider theme={theme}>
-          <NavigationBar />
+          {/* <NavigationBar /> */}
           <div style={{ padding: "0px 20px 0 20px" }}>
             <SocialMediaLinks />
             {children}

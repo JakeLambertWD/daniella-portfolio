@@ -4,9 +4,9 @@ import { Sora } from "next/font/google";
 
 const sora = Sora({ subsets: ["latin"], weight: ["200"] });
 
-function About() {
+function About(props: any) {
   return (
-    <Flex style={{ height: "calc(100vh - 150px)", marginTop: "20px" }}>
+    <Flex id="aboutId" ref={props.aboutRef} style={{ height: "calc(100vh - 150px)", marginTop: "20px" }}>
       <Flex bg="#E5E5E5" h="100%" w="50%" pos="relative">
         <Center
           bg="white"

@@ -12,7 +12,7 @@ import { Sora } from "next/font/google";
 const sora = Sora({ subsets: ["latin"], weight: ["200"] });
 // TODO: Make fonts across the app consistent
 
-function Reviews() {
+function Reviews(props: any) {
   const autoplay = useRef(Autoplay({ delay: 3000 }));
   const iconNext = <IconChevronRight strokeWidth={"0.5px"} style={{ width: "60px", height: "60px" }} />;
   const iconPrev = <IconChevronLeft strokeWidth={"0.5px"} style={{ width: "60px", height: "60px" }} />;
@@ -34,7 +34,7 @@ function Reviews() {
 
   // TODO: add some makeup effects
   return (
-    <Center w="100%" my={140}>
+    <Center id="reviewsId" ref={props.reviewsRef} w="100%" my={140}>
       <Carousel
         classNames={{ control: classes.control }}
         w="80%"

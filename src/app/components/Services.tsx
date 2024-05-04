@@ -6,7 +6,7 @@ import { Bodoni_Moda } from "next/font/google";
 
 const bodoniModa = Bodoni_Moda({ subsets: ["latin"], weight: ["400"] });
 
-function Services() {
+function Services(props: any) {
   const theme = useMantineTheme();
 
   // TODO: Replace the images with my own
@@ -35,7 +35,14 @@ function Services() {
   ];
 
   return (
-    <Flex h={"calc(100vh - 92.8px)"} direction="column" align="center" bg={theme.colors.persianPink[0]}>
+    <Flex
+      id="servicesId"
+      ref={props.servicesRef}
+      h={"calc(100vh - 92.8px)"}
+      direction="column"
+      align="center"
+      bg={theme.colors.persianPink[0]}
+    >
       <Heading title="SERVICES" />
 
       <Flex justify="center" align="center" w="100%" mt="md" style={{ overflowX: "auto" }}>
