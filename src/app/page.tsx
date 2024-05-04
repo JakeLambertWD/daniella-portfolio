@@ -20,12 +20,12 @@ function Home() {
   const theme = useMantineTheme();
   const pathname = usePathname();
   // Define your refs
-  const landingPageRef = useRef(null);
-  const aboutRef = useRef(null);
-  const reviewsRef = useRef(null);
-  const servicesRef = useRef(null);
-  const portfolioRef = useRef(null);
-  const contactMeRef = useRef(null);
+  const landingPageRef = useRef<HTMLElement | null>(null);
+  const aboutRef = useRef<HTMLElement | null>(null);
+  const reviewsRef = useRef<HTMLElement | null>(null);
+  const servicesRef = useRef<HTMLElement | null>(null);
+  const portfolioRef = useRef<HTMLElement | null>(null);
+  const contactMeRef = useRef<HTMLElement | null>(null);
 
   const navigationLinks = [
     { href: "aboutId", label: "Bio", ref: aboutRef },
@@ -135,9 +135,11 @@ function Home() {
                 key={linkIndex}
                 onClick={() => {
                   const yOffset = -110; // adjust this value for your offset
-                  const y = link.ref.current?.getBoundingClientRect().top + window.pageYOffset + yOffset;
-
-                  window.scrollTo({ top: y, behavior: "smooth" });
+                  let y;
+                  if (link.ref.current) {
+                    y = link.ref.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({ top: y, behavior: "smooth" });
+                  }
                 }}
                 label={link.label}
                 variant="subtle"
