@@ -11,7 +11,7 @@ import { WindSong } from "next/font/google";
 import { useEffect, useRef, useState } from "react";
 import { Center, Flex, NavLink, Text, useMantineTheme } from "@mantine/core";
 import Link from "next/link";
-import { navigationLinks } from "@/utils/constants";
+// import { navigationLinks } from "@/utils/constants";
 import DropdownMenu from "./DropdownMenu";
 
 const monsieurLaDoulaise = WindSong({ subsets: ["latin"], weight: ["400"] });
@@ -19,7 +19,6 @@ const monsieurLaDoulaise = WindSong({ subsets: ["latin"], weight: ["400"] });
 function Home() {
   const theme = useMantineTheme();
   const pathname = usePathname();
-  // TODO: Make nav bar items link to component IDS
   // Define your refs
   const landingPageRef = useRef(null);
   const aboutRef = useRef(null);
@@ -27,6 +26,14 @@ function Home() {
   const servicesRef = useRef(null);
   const portfolioRef = useRef(null);
   const contactMeRef = useRef(null);
+
+  const navigationLinks = [
+    { href: "aboutId", label: "Bio", ref: aboutRef },
+    { href: "reviewsId", label: "Reviews", ref: reviewsRef },
+    { href: "servicesId", label: "Services", ref: servicesRef },
+    { href: "portfolioId", label: "Portfolio", ref: portfolioRef },
+    { href: "contactMeId", label: "Contact", ref: contactMeRef },
+  ];
 
   const [activeSection, setActiveSection] = useState(null);
 
@@ -101,6 +108,10 @@ function Home() {
     };
   }, []); // Empty array means this effect runs once on mount and cleanup on unmount
 
+  if (!navigationLinks) {
+    return <div>Loading...</div>;
+  }
+  console.log("navigationLinks", navigationLinks);
   return (
     <>
       {/* navigation bar */}
@@ -122,7 +133,12 @@ function Home() {
             {navigationLinks.map((link, linkIndex) => (
               <NavLink
                 key={linkIndex}
-                onClick={() => aboutRef.current?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() => {
+                  const yOffset = -110; // adjust this value for your offset
+                  const y = link.ref.current?.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+                  window.scrollTo({ top: y, behavior: "smooth" });
+                }}
                 label={link.label}
                 variant="subtle"
                 w="auto"
