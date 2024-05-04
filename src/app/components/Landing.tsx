@@ -1,15 +1,16 @@
 "use client";
 
-import { Box, Center, Flex, Group, Text, useMantineTheme } from "@mantine/core";
+import { Center, Flex, Group, Text, useMantineTheme } from "@mantine/core";
 import Image from "next/image";
 import { IconArrowNarrowRight } from "@tabler/icons-react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 function Landing(props: any) {
   const theme = useMantineTheme();
 
   return (
-    <Box id="landingPageId" ref={props.landingPageRef} style={{ height: "calc(100vh - 92.8px)" }}>
+    <div id="landingPageId" ref={props.landingPageRef} style={{ height: "calc(100vh - 92.8px)" }}>
       <Flex
         w={{ base: "100%", md: "900px" }}
         h={"calc(100vh - 105px)"}
@@ -38,7 +39,7 @@ function Landing(props: any) {
       <Flex
         direction="column"
         justify="center"
-        gap="xl"
+        gap="xs"
         p="lg"
         bg="#E5E5E5"
         h={{ base: 350 }}
@@ -49,15 +50,44 @@ function Landing(props: any) {
         visibleFrom="sm"
         style={{ border: "10px #fff8ff solid", zIndex: 20 }}
       >
-        <Text fz="40px" tt="uppercase" ta="left" c="#6b6b6b" fw={500} style={{ letterSpacing: 0 }}>
+        <motion.p
+          initial={{ opacity: 0, translateX: 100 }}
+          whileInView={{ opacity: 1, translateX: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          style={{
+            fontSize: "40px",
+            textTransform: "uppercase",
+            color: "#6b6b6b",
+            fontWeight: 500,
+            letterSpacing: 0,
+            marginBottom: "1px",
+            marginTop: "30px",
+          }}
+        >
           Unveiling Your Unique Beauty,
           <br /> <span style={{ color: "#212121" }}>with Every Stroke</span>
-        </Text>
+        </motion.p>
 
         <Link href="/booking" style={{ textDecoration: "none", color: "#212121" }}>
           <Group>
-            <Text>Book a slot today</Text>
-            <IconArrowNarrowRight size={20} />
+            <motion.p
+              initial={{ opacity: 0, translateX: 100 }}
+              whileInView={{ opacity: 1, translateX: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 1 }}
+            >
+              Book a slot today
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, translateX: 100 }}
+              whileInView={{ opacity: 1, translateX: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 1 }}
+              style={{ marginTop: 8 }}
+            >
+              <IconArrowNarrowRight size={20} />
+            </motion.div>
           </Group>
         </Link>
       </Flex>
@@ -92,7 +122,7 @@ function Landing(props: any) {
           </Group>
         </Link>
       </Flex>
-    </Box>
+    </div>
   );
 }
 

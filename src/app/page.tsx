@@ -11,7 +11,7 @@ import { WindSong } from "next/font/google";
 import { useEffect, useRef, useState } from "react";
 import { Center, Flex, NavLink, Text, useMantineTheme } from "@mantine/core";
 import Link from "next/link";
-// import { navigationLinks } from "@/utils/constants";
+import { motion } from "framer-motion";
 import DropdownMenu from "./DropdownMenu";
 
 const monsieurLaDoulaise = WindSong({ subsets: ["latin"], weight: ["400"] });
@@ -117,7 +117,12 @@ function Home() {
       {/* navigation bar */}
       <Center id="aboutId" py="lg" pos="sticky" top={0} bg="white" w="100%" style={{ zIndex: 21 }}>
         <Flex w={1250} justify="space-between">
-          <Text>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+          >
             {/* TODO: Upgrade logo */}
             <Link
               href="/"
@@ -126,7 +131,7 @@ function Home() {
             >
               Daniella Garson
             </Link>
-          </Text>
+          </motion.div>
 
           <Flex visibleFrom="sm" gap="xl">
             {/* TODO: make active and hover colors correct */}
