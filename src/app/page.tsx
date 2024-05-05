@@ -108,10 +108,6 @@ function Home() {
     };
   }, []); // Empty array means this effect runs once on mount and cleanup on unmount
 
-  if (!navigationLinks) {
-    return <div>Loading...</div>;
-  }
-  console.log("navigationLinks", navigationLinks);
   return (
     <>
       {/* navigation bar */}
