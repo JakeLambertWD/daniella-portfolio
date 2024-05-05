@@ -1,6 +1,6 @@
 "use client";
 
-import { Center, Flex, Group, Text, useMantineTheme } from "@mantine/core";
+import { Box, Center, Flex, Group, Text, useMantineTheme } from "@mantine/core";
 import Image from "next/image";
 import { IconArrowNarrowRight } from "@tabler/icons-react";
 import Link from "next/link";
@@ -10,7 +10,7 @@ function Landing(props: any) {
   const theme = useMantineTheme();
 
   return (
-    <div id="landingPageId" ref={props.landingPageRef} style={{ height: "calc(100vh - 92.8px)" }}>
+    <Box id="landingPageId" ref={props.landingPageRef} h="calc(100vh - 92.8px)">
       <Flex
         w={{ base: "100%", md: "900px" }}
         h={"calc(100vh - 105px)"}
@@ -122,7 +122,7 @@ function Landing(props: any) {
           </Group>
         </Link>
       </Flex>
-    </div>
+    </Box>
   );
 }
 

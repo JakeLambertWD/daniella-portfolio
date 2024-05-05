@@ -16,6 +16,8 @@ import DropdownMenu from "./DropdownMenu";
 
 const monsieurLaDoulaise = WindSong({ subsets: ["latin"], weight: ["400"] });
 
+// TODO: Replace framer motion with Mantine's <Transition> component
+
 function Home() {
   const theme = useMantineTheme();
   const pathname = usePathname();
