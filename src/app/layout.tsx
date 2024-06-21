@@ -5,7 +5,6 @@ import { Roboto_Condensed } from "next/font/google";
 import "@mantine/core/styles.css";
 import SocialMediaLinks from "./SocialMediaLinks";
 import Footer from "./components/Footer";
-import MantineModal from "./components/MantineModal";
 
 // TODO: Send her an invitation link. Once clicked, she will be greeted with fireworks and a happy birthday message and a click to enter Modal that will take her to the main page.
 // TODO: greet her with a romantic message and a pic of me blowing her a kiss
@@ -65,7 +64,6 @@ export default function RootLayout({
       <body className={montserrat.className}>
         <MantineProvider theme={theme}>
           {/* <NavigationBar /> */}
-          <MantineModal />
           <div style={{ padding: "0px 20px 0 20px" }}>
             <SocialMediaLinks />
             {children}
