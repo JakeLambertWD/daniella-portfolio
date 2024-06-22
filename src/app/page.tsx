@@ -113,25 +113,38 @@ function Home() {
   return (
     <>
       {/* navigation bar */}
-      <Center id="aboutId" py="lg" pos="sticky" top={0} bg="white" w="100%" style={{ zIndex: 21 }}>
+      <Center
+        id="aboutId"
+        py="lg"
+        pos="sticky"
+        top={0}
+        bg="white"
+        w="100%"
+        style={{ zIndex: 21 }}
+      >
         <Flex w={1250} justify="space-between">
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
+            style={{ padding: "5px 20px 5px 20px", border: "2px solid black" }}
           >
             {/* TODO: Upgrade logo */}
             <Link
               href="/"
-              style={{ textDecoration: "none", color: "black", fontSize: "30px" }}
+              style={{
+                textDecoration: "none",
+                color: "black",
+                fontSize: "30px",
+              }}
               className={monsieurLaDoulaise.className}
             >
               Daniella Garson
             </Link>
           </motion.div>
 
-          <Flex visibleFrom="sm" gap="xl">
+          <Flex visibleFrom="md" gap="xl">
             {/* TODO: make active and hover colors correct */}
             {navigationLinks.map((link, linkIndex) => (
               <NavLink
@@ -140,7 +153,10 @@ function Home() {
                   const yOffset = -110; // adjust this value for your offset
                   let y;
                   if (link.ref.current) {
-                    y = link.ref.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    y =
+                      link.ref.current.getBoundingClientRect().top +
+                      window.pageYOffset +
+                      yOffset;
                     window.scrollTo({ top: y, behavior: "smooth" });
                   }
                 }}
@@ -148,8 +164,16 @@ function Home() {
                 variant="subtle"
                 w="auto"
                 tt="uppercase"
-                c={activeSection === link.href ? theme.colors.persianPink[0] : "black"}
-                style={{ letterSpacing: "3px", borderBottom: pathname === link.href ? "3px solid #7cafc4" : "none" }}
+                c={
+                  activeSection === link.href
+                    ? theme.colors.persianPink[0]
+                    : "black"
+                }
+                style={{
+                  letterSpacing: "3px",
+                  borderBottom:
+                    pathname === link.href ? "3px solid #7cafc4" : "none",
+                }}
               />
             ))}
           </Flex>

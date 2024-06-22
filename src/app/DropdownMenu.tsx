@@ -10,14 +10,34 @@ function DropdownMenu() {
   const pathname = usePathname();
 
   return (
-    <Menu shadow="md" offset={16} transitionProps={{ transition: "rotate-right", duration: 150 }}>
+    <Menu
+      shadow="md"
+      offset={16}
+      transitionProps={{ transition: "rotate-right", duration: 150 }}
+    >
       <Menu.Target>
-        <Burger opened={opened} onClick={toggle} color="#555" hiddenFrom="sm" aria-label="Toggle navigation" />
+        <Burger
+          opened={opened}
+          onClick={toggle}
+          color="#555"
+          hiddenFrom="md"
+          aria-label="Toggle navigation"
+        />
       </Menu.Target>
 
-      <Menu.Dropdown hiddenFrom="sm" h={"calc(100vh - 92.8px)"} w="100%" pt="xl">
+      <Menu.Dropdown
+        hiddenFrom="sm"
+        h={"calc(100vh - 92.8px)"}
+        w="100%"
+        pt="xl"
+      >
         {navigationLinks.map(({ href, label }) => (
-          <Link key={href} href={href} onClick={() => toggle()} style={{ textDecoration: "none", color: "black" }}>
+          <Link
+            key={href}
+            href={href}
+            onClick={() => toggle()}
+            style={{ textDecoration: "none", color: "black" }}
+          >
             <Menu.Item c={pathname === href ? "red" : ""} ta="center" py="md">
               {label}
             </Menu.Item>
