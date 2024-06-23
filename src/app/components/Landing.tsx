@@ -1,10 +1,8 @@
 "use client";
 
-import { Box, Center, Flex, Group, Text, useMantineTheme } from "@mantine/core";
+import { Box, Center, Flex, useMantineTheme } from "@mantine/core";
 import Image from "next/image";
-import { IconArrowNarrowRight } from "@tabler/icons-react";
-import Link from "next/link";
-import Motto from "./motto";
+import Motto from "./Motto";
 import MottoSmall from "./MottoSmall";
 
 function Landing(props: any) {
