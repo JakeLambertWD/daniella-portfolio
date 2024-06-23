@@ -135,12 +135,12 @@ function Home() {
               href="/"
               style={{
                 textDecoration: "none",
-                color: "black",
-                fontSize: "30px",
               }}
               className={monsieurLaDoulaise.className}
             >
-              Daniella Garson
+              <Text fz={{ base: 20, sm: 30 }} c="black">
+                Daniella Garson
+              </Text>
             </Link>
           </motion.div>
 
@@ -183,7 +183,7 @@ function Home() {
       </Center>
 
       <LandingPage landingPageRef={landingPageRef} />
-      <About aboutRef={aboutRef} />
+      {/* <About aboutRef={aboutRef} /> */}
       <Reviews reviewsRef={reviewsRef} />
       <Services servicesRef={servicesRef} />
       <Portfolio portfolioRef={portfolioRef} />

@@ -1,7 +1,6 @@
 import { Stack } from "@mantine/core";
 import { IconBrandInstagram, IconBrandFacebook } from "@tabler/icons-react";
 
-// TODO: Think about where to put this on small screens
 function SocialMediaLinks() {
   return (
     <Stack
@@ -15,6 +14,7 @@ function SocialMediaLinks() {
       py="md"
       px="md"
       bg="white"
+      visibleFrom="md"
     >
       {/* TODO: Add links to social media */}
       <IconBrandInstagram size={24} />

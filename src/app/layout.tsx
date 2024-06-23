@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
-import { ColorSchemeScript, createTheme, MantineProvider, CSSVariablesResolver, Modal } from "@mantine/core";
+import {
+  ColorSchemeScript,
+  createTheme,
+  MantineProvider,
+  CSSVariablesResolver,
+  Modal,
+} from "@mantine/core";
 import "@mantine/carousel/styles.css";
 import { Roboto_Condensed } from "next/font/google";
 import "@mantine/core/styles.css";
@@ -15,6 +21,15 @@ export const theme = createTheme({
   /** Put your mantine theme override here */
   white: "#fff8ff",
   black: "#212121",
+
+  breakpoints: {
+    xs: "30em",
+    sm: "48em",
+    md: "64em",
+    lg: "74em",
+    xl: "90em",
+    xxl: "105em",
+  },
 
   colors: {
     persianPink: [
