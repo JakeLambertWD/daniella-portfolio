@@ -8,7 +8,7 @@ function MottoSmall() {
     <Flex
       direction="column"
       hiddenFrom="md"
-      w="100%"
+      w="80%"
       h={200}
       pos="absolute"
       top="71%"
