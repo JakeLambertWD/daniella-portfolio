@@ -8,10 +8,10 @@ function MottoSmall() {
     <Flex
       direction="column"
       hiddenFrom="md"
-      w="80%"
+      w="90%"
       h={200}
       pos="absolute"
-      top="71%"
+      top={{ base: "40%", xs: "60%", sm: "71%" }}
       fz={40}
       pl={50}
       tt="uppercase"

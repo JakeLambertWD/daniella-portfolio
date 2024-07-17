@@ -75,11 +75,21 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <ColorSchemeScript />
+        <style>
+          {/* // TODO: incase i want to remove the padding on small screens */}
+          {/* {`
+            @media (max-width: 500px) {
+              .responsive {
+                padding: 0 !important;
+              }
+            }
+          `} */}
+        </style>
       </head>
       <body className={montserrat.className}>
         <MantineProvider theme={theme}>
           {/* <NavigationBar /> */}
-          <div style={{ padding: "0px 20px 0 20px" }}>
+          <div className="responsive" style={{ padding: "0px 20px 0 20px" }}>
             <SocialMediaLinks />
             {children}
           </div>
