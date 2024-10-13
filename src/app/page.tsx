@@ -183,7 +183,7 @@ function Home() {
       </Center>
 
       <LandingPage landingPageRef={landingPageRef} />
-      {/* <About aboutRef={aboutRef} /> */}
+      <About aboutRef={aboutRef} />
       <Reviews reviewsRef={reviewsRef} />
       <Services servicesRef={servicesRef} />
       <Portfolio portfolioRef={portfolioRef} />
