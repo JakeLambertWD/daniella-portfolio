@@ -63,7 +63,7 @@ function Services(props: any) {
         style={{ overflowX: "auto" }}
       >
         <ScrollArea scrollbarSize={10} w="100%" px="lg">
-          <Group justify="center" wrap="nowrap" py="xs">
+          <Group justify="center" wrap="nowrap" py={{ base: "xl", xs: "xs" }}>
             {servicesData.map(({ id, title, description, image }, i) => (
               <motion.div
                 key={id}
