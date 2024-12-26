@@ -1,20 +1,35 @@
 import { Center, Flex, Stack, Text, Title } from "@mantine/core";
 import Image from "next/image";
 import { Sora } from "next/font/google";
+import { useMediaQuery } from "@mantine/hooks";
 
 const sora = Sora({ subsets: ["latin"], weight: ["200"] });
 
 function About(props: any) {
+  const isGreaterThanSM = useMediaQuery("(min-width: 768px)");
+
   return (
-    <Flex id="aboutId" ref={props.aboutRef} mt={20} h={`calc(100vh - 100.5px)`}>
-      <Flex bg="#E5E5E5" h="100%" w="50%" pos="relative">
+    <Flex
+      id="aboutId"
+      ref={props.aboutRef}
+      mt={20}
+      h={`calc(100vh - 100.5px)`}
+      direction={{ base: "column", sm: "row" }}
+    >
+      <Flex
+        pos="relative"
+        bg="#E5E5E5"
+        h={{ base: 320, sm: "100%" }}
+        w={{ base: "100%", md: "51%" }}
+        visibleFrom="xs"
+      >
         <Center
-          bg="white"
-          h={{ base: 300, lg: 550 }}
-          w={{ base: 300, lg: 420 }}
           pos="absolute"
-          left={"50%"}
-          top={"15%"}
+          bg="white"
+          h={{ xs: 320, sm: 450, md: 550 }}
+          w={{ xs: 250, sm: 350, md: 420 }}
+          left={{ base: "auto", md: "35%", lg: "45%", xl: "50%" }}
+          top={{ base: "0%", sm: "9%" }}
           style={{ border: "10px #fff8ff solid" }}
         >
           <Image
@@ -27,16 +42,17 @@ function About(props: any) {
           />
         </Center>
       </Flex>
-      {/* <Stack
+      <Stack
         className={sora.className}
-        h="100%"
-        w="50%"
-        justify="center"
+        h={{ base: "50%", sm: "100%" }}
+        w={{ base: "100%", md: "43%" }}
+        justify={isGreaterThanSM ? "center" : "flex-start"}
         align="center"
-        pl={150}
+        pl={{ base: 30, md: 95 }}
+        mt={{ base: 40, xs: 0, sm: -60, md: -30 }}
       >
-        <Text pt={100} w="100%" fz={25} fw={800}>
-          My <br /> Story
+        <Text w="100%" fz={25} fw={800}>
+          My {isGreaterThanSM && <br />} Story
         </Text>
         <Text fz="sm">
           As a passionate makeup artist, I am dedicated to enhancing natural
@@ -56,7 +72,7 @@ function About(props: any) {
           exceptional experience for every client, ensuring they walk away
           feeling beautiful, inside and out.
         </Text>
-      </Stack> */}
+      </Stack>
     </Flex>
   );
 }
