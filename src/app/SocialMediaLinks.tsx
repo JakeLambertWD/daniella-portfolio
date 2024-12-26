@@ -15,6 +15,7 @@ function SocialMediaLinks() {
       px="md"
       bg="white"
       visibleFrom="md"
+      style={{ zIndex: 21 }}
     >
       {/* TODO: Add links to social media */}
       <IconBrandInstagram size={24} />

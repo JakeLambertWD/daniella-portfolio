@@ -11,9 +11,9 @@ function Landing(props: any) {
   return (
     <Box
       id="landingPageId"
-      ref={props.landingPageRef}
-      h={`calc(100vh - 100.5px)`}
       pos="relative"
+      ref={props.landingPageRef}
+      h={`calc(100vh - 120.5px)`}
     >
       <Flex
         h={"100%"}
@@ -26,8 +26,8 @@ function Landing(props: any) {
       <Center
         bg="white"
         pos="absolute"
-        h={{ base: 260, xs: 350, sm: 450, lg: 500 }}
-        w={{ base: 360, xs: 480, sm: 620, lg: 700 }}
+        h={{ base: 260, xs: 320, sm: 450, lg: 500 }}
+        w={{ base: 360, xs: 440, sm: 620, lg: 700 }}
         left={{ base: 0, lg: "2%", xl: "10%", xxl: "15%" }}
         top={{ base: 0, md: "15%" }}
         style={{ border: "10px #fff8ff solid" }}

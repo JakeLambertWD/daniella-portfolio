@@ -6,11 +6,7 @@ const sora = Sora({ subsets: ["latin"], weight: ["200"] });
 
 function About(props: any) {
   return (
-    <Flex
-      id="aboutId"
-      ref={props.aboutRef}
-      style={{ height: "calc(100vh - 150px)", marginTop: "20px" }}
-    >
+    <Flex id="aboutId" ref={props.aboutRef} mt={20} h={`calc(100vh - 100.5px)`}>
       <Flex bg="#E5E5E5" h="100%" w="50%" pos="relative">
         <Center
           bg="white"
@@ -31,7 +27,7 @@ function About(props: any) {
           />
         </Center>
       </Flex>
-      <Stack
+      {/* <Stack
         className={sora.className}
         h="100%"
         w="50%"
@@ -60,7 +56,7 @@ function About(props: any) {
           exceptional experience for every client, ensuring they walk away
           feeling beautiful, inside and out.
         </Text>
-      </Stack>
+      </Stack> */}
     </Flex>
   );
 }
