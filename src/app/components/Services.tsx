@@ -1,6 +1,15 @@
 "use client";
 
-import { Card, Flex, Group, Image, ScrollArea, Text, Title, useMantineTheme } from "@mantine/core";
+import {
+  Card,
+  Flex,
+  Group,
+  Image,
+  ScrollArea,
+  Text,
+  Title,
+  useMantineTheme,
+} from "@mantine/core";
 import Heading from "./Heading";
 import { Bodoni_Moda } from "next/font/google";
 import { motion } from "framer-motion";
@@ -46,7 +55,13 @@ function Services(props: any) {
     >
       <Heading title="SERVICES" />
 
-      <Flex justify="center" align="center" w="100%" mt="md" style={{ overflowX: "auto" }}>
+      <Flex
+        justify="center"
+        align="center"
+        w="100%"
+        mt="md"
+        style={{ overflowX: "auto" }}
+      >
         <ScrollArea scrollbarSize={10} w="100%" px="lg">
           <Group justify="center" wrap="nowrap" py="xs">
             {servicesData.map(({ id, title, description, image }, i) => (
@@ -64,12 +79,16 @@ function Services(props: any) {
                   padding="sm"
                   radius="xs"
                   withBorder={false}
-                  h="600px"
+                  h="500px"
                   w={350}
                   ta="center"
                 >
                   <Flex mb={20}>
-                    <Image src={image} height="100%" alt="Picture of the author" />
+                    <Image
+                      src={image}
+                      height="100%"
+                      alt="Picture of the author"
+                    />
                   </Flex>
                   <Title order={2} className={bodoniModa.className} mb="md">
                     {title}

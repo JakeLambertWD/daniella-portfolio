@@ -44,12 +44,15 @@ function About(props: any) {
       </Flex>
       <Stack
         className={sora.className}
-        h={{ base: "50%", sm: "100%" }}
+        h={{ base: "100%", xs: "50%", sm: "100%" }}
         w={{ base: "100%", md: "43%" }}
         justify={isGreaterThanSM ? "center" : "flex-start"}
         align="center"
         pl={{ base: 30, md: 95 }}
-        mt={{ base: 40, xs: 0, sm: -60, md: -30 }}
+        pr={{ base: 30, xs: 0 }}
+        mt={{ base: 0, sm: -60, md: -30 }}
+        pt={{ base: 30, xs: 0 }}
+        bg={{ base: "#E5E5E5", xs: "white" }}
       >
         <Text w="100%" fz={25} fw={800}>
           My {isGreaterThanSM && <br />} Story
