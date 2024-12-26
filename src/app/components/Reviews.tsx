@@ -66,7 +66,7 @@ function Reviews(props: any) {
                 cite={`| ${review.name} |`}
                 mt="xl"
                 ta="center"
-                fz="lg"
+                fz={{ base: "md", sm: "lg" }}
                 fw={400}
                 style={{ lineHeight: "2.2" }}
               >
