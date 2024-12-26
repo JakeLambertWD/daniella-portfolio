@@ -6,6 +6,7 @@ import Link from "next/link";
 function Motto() {
   return (
     <Flex
+      pos="absolute"
       direction="column"
       justify="center"
       gap="xs"
@@ -13,9 +14,8 @@ function Motto() {
       bg="#E5E5E5"
       h={{ base: 350 }}
       w={{ base: 450 }}
-      pos="absolute"
-      right={{ base: "10%", lg: "13%", xxl: "22%" }}
-      top={{ base: "50%", lg: "33%" }}
+      right={{ base: "10%", lg: "16%", xxl: "22%" }}
+      top={{ base: "40%", lg: "26%" }}
       visibleFrom="md"
       style={{ border: "10px #fff8ff solid", zIndex: 20 }}
     >

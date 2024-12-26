@@ -6,14 +6,14 @@ import Link from "next/link";
 function MottoSmall() {
   return (
     <Flex
+      pos="absolute"
       direction="column"
       hiddenFrom="md"
       w="90%"
       h={200}
-      pos="absolute"
-      top={{ base: "40%", xs: "60%", sm: "71%" }}
+      top={{ base: "40%", xs: "55%", sm: "65%" }}
       fz={40}
-      pl={50}
+      pl={60}
       tt="uppercase"
       fw={500}
       mb={1}

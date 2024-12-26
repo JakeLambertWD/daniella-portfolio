@@ -23,12 +23,12 @@ export const theme = createTheme({
   black: "#212121",
 
   breakpoints: {
-    xs: "30em",
-    sm: "48em",
-    md: "64em",
-    lg: "74em",
-    xl: "90em",
-    xxl: "105em",
+    xs: "480px",
+    sm: "768px",
+    md: "1024px",
+    lg: "1184px",
+    xl: "1440px",
+    xxl: "1680px",
   },
 
   colors: {
