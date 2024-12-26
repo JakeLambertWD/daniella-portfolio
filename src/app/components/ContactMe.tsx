@@ -13,6 +13,7 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
+import { useMediaQuery } from "@mantine/hooks";
 import { Bodoni_Moda } from "next/font/google";
 import { Sora } from "next/font/google";
 
@@ -21,6 +22,7 @@ const bodoniModa = Bodoni_Moda({ subsets: ["latin"], weight: ["400"] });
 
 function ContactMe(props: any) {
   const theme = useMantineTheme();
+  const isGreaterThanXS = useMediaQuery("(min-width: 480px)");
 
   const form = useForm({
     mode: "uncontrolled",
@@ -47,47 +49,57 @@ function ContactMe(props: any) {
       ref={props.contactMeRef}
       align="center"
       gap="xs"
-      my="150px"
+      my={{ base: 60, xs: 150 }}
       className={sora.className}
     >
       <Text
         className={bodoniModa.className}
-        fz="130px"
+        fz={{ base: "60px", xs: "90px", sm: "130px" }}
         c={theme.colors.persianPink[0]}
-        mb="-30px"
+        mb={{ xs: "-30px" }}
       >
         Touch Base
       </Text>
-      <Text className={sora.className} fz="lg" mb={-10}>
+      <Text
+        className={sora.className}
+        fz="lg"
+        ta="center"
+        mb={{ base: 20, xs: -10 }}
+      >
         Be in touch to book a free makeup consultation!
       </Text>
 
-      <Group w={{ base: 200, md: 1000 }}>
-        <Stack w="50%">
+      <Flex maw={1000} direction={{ base: "column", xs: "row" }}>
+        <Stack w={{ xs: "50%" }} justify="center">
           <Text>EMAIL | daniellagarson@makeup.com</Text>
           <Text>TELEPHONE | 07792703081</Text>
           <Text>ADDRESS | Hamstead, London</Text>
         </Stack>
 
         <form
-          style={{ width: "45%" }}
+          style={{ width: isGreaterThanXS ? "45%" : "100%" }}
           onSubmit={form.onSubmit((values) => console.log(values))}
         >
           <Stack mx="auto" pt="50px">
-            <Flex justify="space-between" w="100%">
+            <Flex
+              justify="space-between"
+              w="100%"
+              direction={{ base: "column", md: "row" }}
+              gap="md"
+            >
               <TextInput
                 withAsterisk
                 placeholder="Full Name"
                 key={form.key("name")}
                 {...form.getInputProps("name")}
-                w="48%"
+                w={{ md: "48%" }}
               />
               <TextInput
                 withAsterisk
                 placeholder="Email"
                 key={form.key("email")}
                 {...form.getInputProps("email")}
-                w="48%"
+                w={{ md: "48%" }}
               />
             </Flex>
             <Textarea
@@ -104,7 +116,7 @@ function ContactMe(props: any) {
             </Group>
           </Stack>
         </form>
-      </Group>
+      </Flex>
     </Stack>
   );
 }

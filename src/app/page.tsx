@@ -187,7 +187,7 @@ function Home() {
       <Reviews reviewsRef={reviewsRef} />
       <Services servicesRef={servicesRef} />
       <Portfolio portfolioRef={portfolioRef} />
-      {/* <ContactMe contactMeRef={contactMeRef} /> */}
+      <ContactMe contactMeRef={contactMeRef} />
     </>
   );
 }
