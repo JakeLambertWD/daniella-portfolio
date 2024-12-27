@@ -44,14 +44,13 @@ function About(props: any) {
       </Flex>
       <Stack
         className={sora.className}
-        h={{ base: "100%", xs: "50%", sm: "100%" }}
         w={{ base: "100%", md: "43%" }}
         justify={isGreaterThanSM ? "center" : "flex-start"}
         align="center"
         pl={{ base: 30, md: 95 }}
         pr={{ base: 30, xs: 0 }}
-        mt={{ base: 0, sm: -60, md: -30 }}
-        pt={{ base: 30, xs: 0 }}
+        mt={{ base: 0, sm: -60, md: "" }}
+        py={{ base: 30, xs: 0 }}
         bg={{ base: "#E5E5E5", xs: "white" }}
       >
         <Text w="100%" fz={25} fw={800}>
