@@ -13,21 +13,20 @@ function About(props: any) {
       id="aboutId"
       ref={props.aboutRef}
       mt={20}
-      h={`calc(100vh - 100.5px)`}
+      h={{ sm: `calc(100vh - 100.5px)` }}
       direction={{ base: "column", sm: "row" }}
     >
       <Flex
         pos="relative"
         bg="#E5E5E5"
-        h={{ base: 320, sm: "100%" }}
+        h={{ base: 290, xs: 320, sm: "100%" }}
         w={{ base: "100%", md: "51%" }}
-        visibleFrom="xs"
       >
         <Center
           pos="absolute"
           bg="white"
-          h={{ xs: 320, sm: 450, md: 550 }}
-          w={{ xs: 250, sm: 350, md: 420 }}
+          h={{ base: 290, xs: 320, sm: 450, md: 550 }}
+          w={{ base: 230, xs: 250, sm: 350, md: 420 }}
           left={{ base: "auto", md: "35%", lg: "50%" }}
           top={{ base: "0%", sm: "9%", xl: "15%" }}
           style={{ border: "10px #fff8ff solid" }}
@@ -47,11 +46,11 @@ function About(props: any) {
         w={{ base: "100%", md: "43%" }}
         justify={isGreaterThanSM ? "center" : "flex-start"}
         align="center"
-        pl={{ base: 30, md: 95 }}
-        pr={{ base: 30, xs: 0 }}
+        pl={{ base: 10, xs: 30, md: 95 }}
+        pr={10}
         mt={{ base: 0, sm: -60, md: "" }}
         py={{ base: 30, xs: 0 }}
-        bg={{ base: "#E5E5E5", xs: "white" }}
+        bg="white"
       >
         <Text w="100%" fz={25} fw={800}>
           My {isGreaterThanSM && <br />} Story
