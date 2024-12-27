@@ -28,8 +28,8 @@ function About(props: any) {
           bg="white"
           h={{ xs: 320, sm: 450, md: 550 }}
           w={{ xs: 250, sm: 350, md: 420 }}
-          left={{ base: "auto", md: "35%", lg: "45%", xl: "50%" }}
-          top={{ base: "0%", sm: "9%" }}
+          left={{ base: "auto", md: "35%", lg: "50%" }}
+          top={{ base: "0%", sm: "9%", xl: "15%" }}
           style={{ border: "10px #fff8ff solid" }}
         >
           <Image

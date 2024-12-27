@@ -13,6 +13,7 @@ import {
 import Heading from "./Heading";
 import { Bodoni_Moda } from "next/font/google";
 import { motion } from "framer-motion";
+import { useMediaQuery } from "@mantine/hooks";
 
 const bodoniModa = Bodoni_Moda({ subsets: ["latin"], weight: ["400"] });
 
@@ -44,6 +45,8 @@ function Services(props: any) {
     },
   ];
 
+  const isGreaterThanSM = useMediaQuery("(min-width: 768px)");
+
   return (
     <Flex
       id="servicesId"
@@ -67,11 +70,15 @@ function Services(props: any) {
             {servicesData.map(({ id, title, description, image }, i) => (
               <motion.div
                 key={id}
-                whileHover={{ scale: 1.02 }}
-                initial={{ opacity: 0, translateX: 200 }}
-                whileInView={{ opacity: 1, translateX: 0 }}
+                whileHover={isGreaterThanSM ? { scale: 1.02 } : {}}
+                initial={isGreaterThanSM ? { opacity: 0, translateX: 200 } : {}}
+                whileInView={
+                  isGreaterThanSM ? { opacity: 1, translateX: 0 } : {}
+                }
                 viewport={{ once: true }}
-                transition={{ duration: 1.5, delay: i * 0.4 }}
+                transition={
+                  isGreaterThanSM ? { duration: 1.5, delay: i * 0.4 } : {}
+                }
               >
                 <Card
                   className={bodoniModa.className}
