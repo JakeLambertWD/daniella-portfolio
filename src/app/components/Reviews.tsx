@@ -8,6 +8,7 @@ import { Blockquote } from "@mantine/core";
 import { IconChevronRight, IconChevronLeft } from "@tabler/icons-react";
 import classes from "./reviews.module.css";
 import { Sora } from "next/font/google";
+import { useMediaQuery } from "@mantine/hooks";
 
 const sora = Sora({ subsets: ["latin"], weight: ["200"] });
 // TODO: Make fonts across the app consistent
@@ -42,6 +43,8 @@ function Reviews(props: any) {
     />
   );
 
+  const isGreaterThanSM = useMediaQuery("(min-width: 768px)");
+
   // TODO: add some makeup effects
   return (
     <Center id="reviewsId" ref={props.reviewsRef} w="100%" my={140}>
@@ -54,12 +57,14 @@ function Reviews(props: any) {
         onMouseLeave={autoplay.current.reset}
         nextControlIcon={iconNext}
         previousControlIcon={iconPrev}
+        styles={{ controls: { marginTop: isGreaterThanSM ? 0 : 150 } }}
       >
         {reviewsData.map((review, index) => (
-          <Carousel.Slide key={index} px="lg">
+          <Carousel.Slide key={index} px={"lg"}>
             <Center>
               <Blockquote
                 className={sora.className}
+                px={0}
                 maw={700}
                 color="white"
                 radius="md"
