@@ -87,7 +87,7 @@ function Services(props: any) {
                   radius="xs"
                   withBorder={false}
                   h="500px"
-                  w={350}
+                  w={{ base: 310, xs: 350 }}
                   ta="center"
                 >
                   <Flex mb={20}>
