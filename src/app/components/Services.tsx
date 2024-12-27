@@ -62,7 +62,7 @@ function Services(props: any) {
         justify="center"
         align="center"
         w="100%"
-        mt="md"
+        mt={0}
         style={{ overflowX: "auto" }}
       >
         <ScrollArea scrollbarSize={10} w="100%" px="lg">
@@ -70,15 +70,15 @@ function Services(props: any) {
             {servicesData.map(({ id, title, description, image }, i) => (
               <motion.div
                 key={id}
-                whileHover={isGreaterThanSM ? { scale: 1.02 } : {}}
-                initial={isGreaterThanSM ? { opacity: 0, translateX: 200 } : {}}
-                whileInView={
-                  isGreaterThanSM ? { opacity: 1, translateX: 0 } : {}
-                }
-                viewport={{ once: true }}
-                transition={
-                  isGreaterThanSM ? { duration: 1.5, delay: i * 0.4 } : {}
-                }
+                // whileHover={isGreaterThanSM ? { scale: 1.02 } : {}}
+                // initial={isGreaterThanSM ? { opacity: 0, translateX: 200 } : {}}
+                // whileInView={
+                //   isGreaterThanSM ? { opacity: 1, translateX: 0 } : {}
+                // }
+                // viewport={{ once: true }}
+                // transition={
+                //   isGreaterThanSM ? { duration: 1.5, delay: i * 0.4 } : {}
+                // }
               >
                 <Card
                   className={bodoniModa.className}

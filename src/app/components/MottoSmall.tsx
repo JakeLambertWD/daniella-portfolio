@@ -11,7 +11,7 @@ function MottoSmall() {
       hiddenFrom="md"
       w="90%"
       h={200}
-      top={{ base: "40%", xs: "55%", sm: "65%" }}
+      top={{ base: "47%", xs: "55%", sm: "65%" }}
       fz={30}
       pl={60}
       tt="uppercase"
