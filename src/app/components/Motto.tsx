@@ -49,9 +49,10 @@ function Motto() {
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 1 }}
           >
-            Book a slot today
+            Daniella Garson Makeup Artist
           </motion.p>
-          <motion.div
+          {/* TODO: Removed the right arrow for now, may use this in the future */}
+          {/* <motion.div
             initial={{ opacity: 0, translateX: 100 }}
             whileInView={{ opacity: 1, translateX: 0 }}
             viewport={{ once: true }}
@@ -59,7 +60,7 @@ function Motto() {
             style={{ marginTop: 8 }}
           >
             <IconArrowNarrowRight size={20} />
-          </motion.div>
+          </motion.div> */}
         </Group>
       </Link>
     </Flex>
