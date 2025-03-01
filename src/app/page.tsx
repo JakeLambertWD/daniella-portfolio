@@ -9,10 +9,18 @@ import Reviews from "./components/Reviews";
 import Services from "./components/Services";
 import { WindSong } from "next/font/google";
 import { useEffect, useRef, useState } from "react";
-import { Center, Flex, NavLink, Text, useMantineTheme } from "@mantine/core";
+import {
+  Center,
+  Flex,
+  Image,
+  NavLink,
+  Text,
+  useMantineTheme,
+} from "@mantine/core";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import DropdownMenu from "./DropdownMenu";
+import { useGetPhotos } from "@/hooks/getPhotos";
 
 const monsieurLaDoulaise = WindSong({ subsets: ["latin"], weight: ["400"] });
 
@@ -38,6 +46,8 @@ function Home() {
   ];
 
   const [activeSection, setActiveSection] = useState(null);
+
+  const photos: { imageURL: string }[] = useGetPhotos();
 
   // In your useEffect hook
   useEffect(() => {
@@ -181,6 +191,13 @@ function Home() {
           <DropdownMenu />
         </Flex>
       </Center>
+
+      {/* <Image
+        src={photos[0]?.imageURL}
+        alt={`Image `}
+        width={400}
+        height={400}
+      /> */}
 
       <LandingPage landingPageRef={landingPageRef} />
       <About aboutRef={aboutRef} />

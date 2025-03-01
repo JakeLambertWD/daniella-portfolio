@@ -13,7 +13,14 @@ function NavigationBar() {
   const pathname = usePathname();
   // TODO: Make nav bar items link to component IDS
   return (
-    <Center py="lg" pos="sticky" top={0} bg="white" w="100%" style={{ zIndex: 21 }}>
+    <Center
+      py="lg"
+      pos="sticky"
+      top={0}
+      bg="white"
+      w="100%"
+      style={{ zIndex: 21 }}
+    >
       <Flex w={1250} justify="space-between">
         <Text>
           {/* TODO: Upgrade logo */}
@@ -25,7 +32,6 @@ function NavigationBar() {
             Daniella Garson
           </Link>
         </Text>
-
         <Flex visibleFrom="sm" gap="xl">
           {/* TODO: make active and hover colors correct */}
           {navigationLinks.map((link, linkIndex) => (
@@ -38,11 +44,15 @@ function NavigationBar() {
               w="auto"
               tt="uppercase"
               c={pathname === link.href ? "#7cafc4" : "black"}
-              style={{ letterSpacing: "3px", borderBottom: pathname === link.href ? "3px solid #7cafc4" : "none" }}
+              style={{
+                letterSpacing: "3px",
+                borderBottom:
+                  pathname === link.href ? "3px solid #7cafc4" : "none",
+              }}
             />
           ))}
         </Flex>
-
+        {/* TODO: Fix dropdown menu links */}
         <DropdownMenu />
       </Flex>
     </Center>
