@@ -148,7 +148,7 @@ function Home() {
               }}
               className={monsieurLaDoulaise.className}
             >
-              <Text fz={{ base: 20, sm: 30 }} c="black">
+              <Text fz={{ base: 15, sm: 20 }} c="black">
                 Daniella Garson
               </Text>
             </Link>
