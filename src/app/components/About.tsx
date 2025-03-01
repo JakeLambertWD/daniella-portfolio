@@ -18,17 +18,17 @@ function About(props: any) {
     >
       <Flex
         pos="relative"
-        bg="#E5E5E5"
-        h={{ base: 290, xs: 320, sm: "100%" }}
+        bg={{ base: "transparent", sm: "#E5E5E5" }}
+        h={{ base: 470, sm: "100%" }}
         w={{ base: "100%", md: "51%" }}
       >
         <Center
-          pos="absolute"
+          pos={{ base: "relative", sm: "absolute" }}
           bg="white"
-          h={{ base: 290, xs: 320, sm: 450, md: 550 }}
-          w={{ base: 230, xs: 250, sm: 350, md: 420 }}
+          h={{ base: 470, sm: 450, md: 550 }}
+          w={{ base: 380, sm: 350, md: 420 }}
           left={{ base: "auto", md: "35%", lg: "50%" }}
-          top={{ base: "0%", sm: "9%", xl: "15%" }}
+          top={{ base: "0%", sm: "9%", xl: "12%" }}
           style={{ border: "10px #fff8ff solid" }}
         >
           <Image
@@ -48,8 +48,8 @@ function About(props: any) {
         align="center"
         pl={{ base: 20, md: 110 }}
         pr={10}
-        mt={{ base: 0, sm: -60, md: "" }}
-        py={{ base: 30, xs: 0 }}
+        mt={{ base: 0, sm: 10, md: "" }}
+        py={{ base: 10, xs: 0 }}
         bg="white"
       >
         <Text w="100%" fz={25} fw={800}>
