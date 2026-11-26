@@ -12,9 +12,9 @@ function Home() {
     <>
       <LandingPage />
       <About />
-      <Reviews />
       <Services />
       <Portfolio />
+      <Reviews />
       <ContactMe />
     </>
   );

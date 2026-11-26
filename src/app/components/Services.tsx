@@ -1,113 +1,125 @@
-"use client";
+import Image, { StaticImageData } from "next/image";
+import { contactSectionId } from "@/utils/constants";
+import bridalPhoto from "../../../public/pic12.jpg";
+import occasionPhoto from "../../../public/pic8.jpg";
+import naturalPhoto from "../../../public/pic13.jpg";
+import shared from "./shared.module.css";
+import classes from "./Services.module.css";
 
-import {
-  Card,
-  Flex,
-  Group,
-  Image,
-  ScrollArea,
-  Text,
-  Title,
-  useMantineTheme,
-} from "@mantine/core";
-import Heading from "./Heading";
-import { Bodoni_Moda } from "next/font/google";
-import { motion } from "framer-motion";
-import { useMediaQuery } from "@mantine/hooks";
+type Service = {
+  name: string;
+  description: string;
+  includes: string[];
+  /** Starting price in pounds. Leave as null to show "Price on enquiry". */
+  priceFrom: number | null;
+  image: StaticImageData;
+  imageAlt: string;
+};
 
-const bodoniModa = Bodoni_Moda({ subsets: ["latin"], weight: ["400"] });
+// TODO: Confirm the "includes" lists and prices with Daniella
+const services: Service[] = [
+  {
+    name: "Bridal",
+    description:
+      "A relaxed trial to perfect your look, then long-wear makeup on the day that lasts through every photo, tear and hug.",
+    includes: [
+      "Trial session at home or in studio",
+      "Lashes and touch-up kit included",
+      "Early starts and travel available",
+    ],
+    priceFrom: null,
+    image: bridalPhoto,
+    imageAlt: "Bride in a full gown on a sweeping staircase",
+  },
+  {
+    name: "Occasion glam",
+    description:
+      "Evening looks, parties, bar and bat mitzvahs, and bridal party makeup — polished glam that still looks like you.",
+    includes: [
+      "Full face with lashes",
+      "Group bookings for the whole party",
+      "On-location service",
+    ],
+    priceFrom: null,
+    image: occasionPhoto,
+    imageAlt: "Client with defined brows, rose lip and soft waves",
+  },
+  {
+    name: "Skin prep & natural glow",
+    description:
+      "Skin-first makeup for photoshoots, meetings and everyday occasions. Fresh, luminous and barely-there.",
+    includes: [
+      "Hydrating skin preparation",
+      "Light, buildable coverage",
+      "Product tips to recreate at home",
+    ],
+    priceFrom: null,
+    image: naturalPhoto,
+    imageAlt: "Smiling client with fresh, glowing natural makeup",
+  },
+];
 
-function Services(props: any) {
-  const theme = useMantineTheme();
-
-  // TODO: Replace the images with my own
-  const servicesData = [
-    {
-      id: 1,
-      title: "Skin Care",
-      description:
-        "Service 1 description. This is a paragraph of text as a placeholder for the description of the service.",
-      image: "/service1.webp",
-    },
-    {
-      id: 2,
-      title: "Makeup",
-      description:
-        "Service 2 description. This is a paragraph of text as a placeholder for the description of the service.",
-      image: "/service2.webp",
-    },
-    {
-      id: 3,
-      title: "Weddings",
-      description:
-        "Service 3 description. This is a paragraph of text as a placeholder for the description of the service.",
-      image: "/service3.webp",
-    },
-  ];
-
-  const isGreaterThanSM = useMediaQuery("(min-width: 768px)");
-
+function Services() {
   return (
-    <Flex
-      id="servicesId"
-      ref={props.servicesRef}
-      h={"calc(100vh - 92.8px)"}
-      direction="column"
-      align="center"
-      bg={theme.colors.persianPink[0]}
-    >
-      <Heading title="SERVICES" />
+    <section id="servicesId" className={`${shared.fullBleed} ${classes.section}`}>
+      <div className={`${shared.container} ${classes.inner}`}>
+        <div className={classes.intro}>
+          <div className={classes.introHeading}>
+            <p className={shared.eyebrow}>Services</p>
+            <h2 className={shared.sectionTitle}>How I can help</h2>
+          </div>
+          <p className={classes.introText}>
+            I travel to you across London. Every booking includes a skin-prep
+            consultation and a touch-up kit for the day.
+          </p>
+        </div>
 
-      <Flex
-        justify="center"
-        align="center"
-        w="100%"
-        mt={0}
-        style={{ overflowX: "auto" }}
-      >
-        <ScrollArea scrollbarSize={10} w="100%" px="lg">
-          <Group justify="center" wrap="nowrap" py={{ base: "xl", xs: "xs" }}>
-            {servicesData.map(({ id, title, description, image }, i) => (
-              <motion.div
-                key={id}
-                // whileHover={isGreaterThanSM ? { scale: 1.02 } : {}}
-                // initial={isGreaterThanSM ? { opacity: 0, translateX: 200 } : {}}
-                // whileInView={
-                //   isGreaterThanSM ? { opacity: 1, translateX: 0 } : {}
-                // }
-                // viewport={{ once: true }}
-                // transition={
-                //   isGreaterThanSM ? { duration: 1.5, delay: i * 0.4 } : {}
-                // }
-              >
-                <Card
-                  className={bodoniModa.className}
-                  shadow="xl"
-                  padding="sm"
-                  radius="xs"
-                  withBorder={false}
-                  h="500px"
-                  w={{ base: 310, xs: 350 }}
-                  ta="center"
+        {services.map((service, i) => (
+          <article key={service.name} className={classes.service}>
+            <Image
+              src={service.image}
+              alt={service.imageAlt}
+              className={classes.photo}
+              sizes="(min-width: 1024px) 600px, 100vw"
+              placeholder="blur"
+            />
+            <div className={classes.details}>
+              <p className={classes.number}>
+                {String(i + 1).padStart(2, "0")}
+              </p>
+              <h3 className={classes.name}>{service.name}</h3>
+              <p className={classes.description}>{service.description}</p>
+              <ul className={classes.includes}>
+                {service.includes.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+              <div className={classes.footer}>
+                <p className={classes.price}>
+                  {service.priceFrom === null ? (
+                    "Price on enquiry"
+                  ) : (
+                    <>
+                      From{" "}
+                      <span className={classes.priceValue}>
+                        £{service.priceFrom}
+                      </span>
+                    </>
+                  )}
+                </p>
+                <a
+                  href={`#${contactSectionId}`}
+                  className={shared.buttonOutline}
+                  aria-label={`Enquire about ${service.name}`}
                 >
-                  <Flex mb={20}>
-                    <Image
-                      src={image}
-                      height="100%"
-                      alt="Picture of the author"
-                    />
-                  </Flex>
-                  <Title order={2} className={bodoniModa.className} mb="md">
-                    {title}
-                  </Title>
-                  <Text px="md">{description}</Text>
-                </Card>
-              </motion.div>
-            ))}
-          </Group>
-        </ScrollArea>
-      </Flex>
-    </Flex>
+                  Enquire
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }
 
