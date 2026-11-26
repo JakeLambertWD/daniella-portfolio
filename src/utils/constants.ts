@@ -27,3 +27,10 @@ export const socialLinks: { instagram: string | null; facebook: string | null } 
   instagram: null,
   facebook: null,
 };
+
+// TODO: Confirm these with Daniella (the email domain looks like a placeholder)
+export const contactDetails = {
+  email: "daniellagarson@makeup.com",
+  phone: "07792 703081",
+  area: "Hampstead, London",
+};

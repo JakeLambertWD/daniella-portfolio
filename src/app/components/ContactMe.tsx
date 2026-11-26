@@ -1,123 +1,166 @@
 "use client";
 
-import {
-  Box,
-  Button,
-  Center,
-  Flex,
-  Group,
-  Stack,
-  Text,
-  TextInput,
-  Textarea,
-  useMantineTheme,
-} from "@mantine/core";
-import { useForm } from "@mantine/form";
-import { useMediaQuery } from "@mantine/hooks";
-import { Bodoni_Moda } from "next/font/google";
-import { Sora } from "next/font/google";
+import { FormEvent, useState } from "react";
+import { contactDetails, contactSectionId } from "@/utils/constants";
+import { services } from "./Services";
+import shared from "./shared.module.css";
+import classes from "./ContactMe.module.css";
 
-const sora = Sora({ subsets: ["latin"], weight: ["200"] });
-const bodoniModa = Bodoni_Moda({ subsets: ["latin"], weight: ["400"] });
+type Values = {
+  name: string;
+  email: string;
+  date: string;
+  service: string;
+  location: string;
+  message: string;
+};
 
-function ContactMe(props: any) {
-  const theme = useMantineTheme();
-  const isGreaterThanXS = useMediaQuery("(min-width: 480px)");
+const emptyValues: Values = {
+  name: "",
+  email: "",
+  date: "",
+  service: services[0].name,
+  location: "",
+  message: "",
+};
 
-  const form = useForm({
-    mode: "uncontrolled",
-    initialValues: {
-      name: "",
-      email: "",
-      message: "",
-    },
+function validate(values: Values) {
+  const errors: Partial<Record<keyof Values, string>> = {};
+  if (values.name.trim().length < 2) errors.name = "Please enter your name";
+  if (!/^\S+@\S+\.\S+$/.test(values.email))
+    errors.email = "Please enter a valid email";
+  if (values.message.trim().length < 10)
+    errors.message = "Tell me a little more about your day";
+  return errors;
+}
 
-    validate: {
-      name: (value) =>
-        value.length < 2 ? "Name must have at least 2 letters" : null,
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
-      message: (value) =>
-        value.length < 10 ? "Message must have at least 10 letters" : null,
-    },
+// Until a form-sending service is set up, submitting opens the visitor's
+// email app with the enquiry written out, addressed to Daniella.
+function buildMailto(values: Values) {
+  const subject = `${values.service} enquiry from ${values.name}`;
+  const body = [
+    `Name: ${values.name}`,
+    `Email: ${values.email}`,
+    `Service: ${values.service}`,
+    values.date ? `Event date: ${values.date}` : null,
+    values.location ? `Location: ${values.location}` : null,
+    "",
+    values.message,
+  ]
+    .filter((line) => line !== null)
+    .join("\n");
+  return `mailto:${contactDetails.email}?subject=${encodeURIComponent(
+    subject
+  )}&body=${encodeURIComponent(body)}`;
+}
+
+function ContactMe() {
+  const [values, setValues] = useState<Values>(emptyValues);
+  const [errors, setErrors] = useState<ReturnType<typeof validate>>({});
+  const [sent, setSent] = useState(false);
+
+  const field = (name: keyof Values) => ({
+    id: `contact-${name}`,
+    name,
+    value: values[name],
+    onChange: (
+      e: React.ChangeEvent<
+        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      >
+    ) => setValues((v) => ({ ...v, [name]: e.target.value })),
+    "aria-invalid": errors[name] ? true : undefined,
+    "aria-describedby": errors[name] ? `contact-${name}-error` : undefined,
+    className: classes.input,
   });
 
-  // TODO: Add footer from this site https://www.wix.com/website-template/view/html/2104?originUrl=https%3A%2F%2Fwww.wix.com%2Fwebsite%2Ftemplates%2Fhtml%2Fbeauty-and-hair%2Fmakeup-and-cosmetics&tpClick=view_button&esi=becf00d1-4ad5-4e97-b9a7-ac644bd0bf91
+  const errorFor = (name: keyof Values) =>
+    errors[name] && (
+      <span id={`contact-${name}-error`} className={classes.error}>
+        {errors[name]}
+      </span>
+    );
+
+  const onSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    const found = validate(values);
+    setErrors(found);
+    if (Object.keys(found).length > 0) return;
+    window.location.href = buildMailto(values);
+    setSent(true);
+  };
 
   return (
-    <Stack
-      id="contactMeId"
-      ref={props.contactMeRef}
-      align="center"
-      gap="xs"
-      my={{ base: 60, xs: 150 }}
-      className={sora.className}
-    >
-      <Text
-        className={bodoniModa.className}
-        fz={{ base: "60px", xs: "90px", sm: "130px" }}
-        c={theme.colors.persianPink[0]}
-        mb={{ xs: "-30px" }}
-      >
-        Touch Base
-      </Text>
-      <Text
-        className={sora.className}
-        fz="lg"
-        ta="center"
-        mb={{ base: 20, xs: -10 }}
-      >
-        Be in touch to book a free makeup consultation!
-      </Text>
+    <section id={contactSectionId} className={`${shared.container} ${classes.section}`}>
+      <div className={classes.intro}>
+        <p className={shared.eyebrow}>Contact</p>
+        <h2 className={shared.sectionTitle}>Let&apos;s plan your look</h2>
+        <p className={classes.lede}>
+          Tell me a little about your day and I&apos;ll get back to you with
+          availability and a quote.
+        </p>
+        <ul className={classes.details}>
+          <li>
+            <a href={`mailto:${contactDetails.email}`}>{contactDetails.email}</a>
+          </li>
+          <li>
+            <a href={`tel:${contactDetails.phone.replace(/\s/g, "")}`}>
+              {contactDetails.phone}
+            </a>
+          </li>
+          <li className={classes.muted}>{contactDetails.area}</li>
+        </ul>
+      </div>
 
-      <Flex maw={1000} direction={{ base: "column", xs: "row" }}>
-        <Stack w={{ xs: "50%" }} justify="center">
-          <Text>EMAIL | daniellagarson@makeup.com</Text>
-          <Text>TELEPHONE | 07792703081</Text>
-          <Text>ADDRESS | Hamstead, London</Text>
-        </Stack>
-
-        <form
-          style={{ width: isGreaterThanXS ? "45%" : "100%" }}
-          onSubmit={form.onSubmit((values) => console.log(values))}
+      <form className={classes.form} onSubmit={onSubmit} noValidate>
+        <label className={classes.field} htmlFor="contact-name">
+          Full name
+          <input type="text" autoComplete="name" {...field("name")} />
+          {errorFor("name")}
+        </label>
+        <label className={classes.field} htmlFor="contact-email">
+          Email
+          <input type="email" autoComplete="email" {...field("email")} />
+          {errorFor("email")}
+        </label>
+        <label className={classes.field} htmlFor="contact-date">
+          Event date
+          <input type="date" {...field("date")} />
+        </label>
+        <label className={classes.field} htmlFor="contact-service">
+          Service
+          <select {...field("service")}>
+            {services.map((s) => (
+              <option key={s.name}>{s.name}</option>
+            ))}
+          </select>
+        </label>
+        <label
+          className={`${classes.field} ${classes.fullWidth}`}
+          htmlFor="contact-location"
         >
-          <Stack mx="auto" pt="50px">
-            <Flex
-              justify="space-between"
-              w="100%"
-              direction={{ base: "column", md: "row" }}
-              gap="md"
-            >
-              <TextInput
-                withAsterisk
-                placeholder="Full Name"
-                key={form.key("name")}
-                {...form.getInputProps("name")}
-                w={{ md: "48%" }}
-              />
-              <TextInput
-                withAsterisk
-                placeholder="Email"
-                key={form.key("email")}
-                {...form.getInputProps("email")}
-                w={{ md: "48%" }}
-              />
-            </Flex>
-            <Textarea
-              placeholder="Message"
-              resize="vertical"
-              key={form.key("message")}
-              {...form.getInputProps("message")}
-            />
-
-            <Group>
-              <Button type="submit" color={theme.colors.persianPink[0]}>
-                Submit
-              </Button>
-            </Group>
-          </Stack>
-        </form>
-      </Flex>
-    </Stack>
+          Location
+          <input type="text" autoComplete="address-level2" {...field("location")} />
+        </label>
+        <label
+          className={`${classes.field} ${classes.fullWidth}`}
+          htmlFor="contact-message"
+        >
+          Tell me about your day
+          <textarea rows={4} {...field("message")} />
+          {errorFor("message")}
+        </label>
+        <div className={classes.submitRow}>
+          <button type="submit" className={`${shared.buttonPrimary} ${classes.submit}`}>
+            Send enquiry
+          </button>
+          {sent && (
+            <p className={classes.note} role="status">
+              Your email app should open with your enquiry ready to send.
+            </p>
+          )}
+        </div>
+      </form>
+    </section>
   );
 }
 

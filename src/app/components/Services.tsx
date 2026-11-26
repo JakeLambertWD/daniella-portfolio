@@ -17,7 +17,7 @@ type Service = {
 };
 
 // TODO: Confirm the "includes" lists and prices with Daniella
-const services: Service[] = [
+export const services: Service[] = [
   {
     name: "Bridal",
     description:

@@ -1,0 +1,155 @@
+.section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+  padding: 72px 0;
+}
+
+@media (min-width: 768px) {
+  .section {
+    gap: 80px;
+    padding: 128px 12px;
+  }
+}
+
+.intro {
+  flex: 1 1 340px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.lede {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #5e504c;
+}
+
+@media (min-width: 768px) {
+  .lede {
+    font-size: 17px;
+  }
+}
+
+.details {
+  margin: 0;
+  padding: 24px 0 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px solid #eadfda;
+  font-size: 16px;
+}
+
+.details a {
+  color: #2e2220;
+  text-decoration: none;
+}
+
+.details a:hover {
+  color: #8a5a5a;
+}
+
+.muted {
+  color: #6b5e5a;
+}
+
+/* Form card */
+.form {
+  flex: 1 1 520px;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  background: #ffffff;
+  padding: 28px 20px;
+  box-shadow: 0 30px 60px rgba(46, 34, 32, 0.06);
+}
+
+@media (min-width: 768px) {
+  .form {
+    padding: 48px;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #6b5e5a;
+}
+
+.fullWidth {
+  grid-column: 1 / -1;
+}
+
+.input {
+  font: inherit;
+  font-size: 16px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #2e2220;
+  border: 0;
+  border-bottom: 1px solid #cdbab5;
+  border-radius: 0;
+  padding: 10px 0;
+  background: transparent;
+  transition: border-color 0.2s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-bottom-color: #2e2220;
+}
+
+.input[aria-invalid="true"] {
+  border-bottom-color: #a33a3a;
+}
+
+textarea.input {
+  resize: vertical;
+}
+
+select.input {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%232E2220' stroke-width='1.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 4px center;
+  padding-right: 24px;
+}
+
+.error {
+  font-size: 13px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #a33a3a;
+}
+
+.submitRow {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+.submit {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.note {
+  margin: 0;
+  font-size: 14px;
+  color: #6b5e5a;
+}
