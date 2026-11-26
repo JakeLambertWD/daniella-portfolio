@@ -9,7 +9,7 @@ const categories = ["Bridal", "Bridal party", "Occasion glam", "Skin prep"];
 
 function Landing() {
   return (
-    <>
+    <div className={classes.intro}>
       <section id="landingPageId" className={`${shared.container} ${classes.hero}`}>
         <div className={classes.copy}>
           <p className={shared.eyebrow}>Bridal &amp; occasion makeup · London</p>
@@ -35,7 +35,7 @@ function Landing() {
             src={heroPhoto}
             alt="Bride with a pearl tiara and soft glam makeup, on a staircase"
             className={classes.photo}
-            sizes="(min-width: 1024px) 600px, 100vw"
+            sizes="(min-width: 1024px) 580px, 100vw"
             placeholder="blur"
             priority
           />
@@ -56,7 +56,7 @@ function Landing() {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
