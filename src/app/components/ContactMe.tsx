@@ -34,8 +34,37 @@ function validate(values: Values) {
   return errors;
 }
 
-// Until a form-sending service is set up, submitting opens the visitor's
-// email app with the enquiry written out, addressed to Daniella.
+// Web3Forms emails each enquiry to Daniella. The access key is designed to be
+// public, so it can live in a NEXT_PUBLIC_ variable. Without a key (or if the
+// service fails) the form falls back to opening the visitor's email app.
+const web3FormsKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+
+type Status = "idle" | "sending" | "sent" | "error" | "mailto";
+
+async function sendEnquiry(values: Values, botcheck: boolean) {
+  const res = await fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({
+      access_key: web3FormsKey,
+      subject: `${values.service} enquiry from ${values.name}`,
+      from_name: "Daniella Garson website",
+      replyto: values.email,
+      botcheck,
+      Name: values.name,
+      Email: values.email,
+      Service: values.service,
+      "Event date": values.date || "Not given",
+      Location: values.location || "Not given",
+      Message: values.message,
+    }),
+  });
+  const data = await res.json().catch(() => null);
+  if (!res.ok || !data?.success) {
+    throw new Error(data?.message ?? `Web3Forms returned ${res.status}`);
+  }
+}
+
 function buildMailto(values: Values) {
   const subject = `${values.service} enquiry from ${values.name}`;
   const body = [
@@ -57,7 +86,9 @@ function buildMailto(values: Values) {
 function ContactMe() {
   const [values, setValues] = useState<Values>(emptyValues);
   const [errors, setErrors] = useState<ReturnType<typeof validate>>({});
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
+  // Hidden "honeypot" checkbox: people never see it, spam bots tick it
+  const [botcheck, setBotcheck] = useState(false);
 
   const field = (name: keyof Values) => ({
     id: `contact-${name}`,
@@ -80,13 +111,27 @@ function ContactMe() {
       </span>
     );
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const found = validate(values);
     setErrors(found);
     if (Object.keys(found).length > 0) return;
-    window.location.href = buildMailto(values);
-    setSent(true);
+
+    if (!web3FormsKey) {
+      window.location.href = buildMailto(values);
+      setStatus("mailto");
+      return;
+    }
+
+    setStatus("sending");
+    try {
+      await sendEnquiry(values, botcheck);
+      setStatus("sent");
+      setValues(emptyValues);
+    } catch (error) {
+      console.error("Enquiry failed to send", error);
+      setStatus("error");
+    }
   };
 
   return (
@@ -149,13 +194,34 @@ function ContactMe() {
           <textarea rows={4} {...field("message")} />
           {errorFor("message")}
         </label>
+        <input
+          type="checkbox"
+          name="botcheck"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          checked={botcheck}
+          onChange={(e) => setBotcheck(e.target.checked)}
+          className={classes.honeypot}
+        />
         <div className={classes.submitRow}>
-          <button type="submit" className={`${shared.buttonPrimary} ${classes.submit}`}>
-            Send enquiry
+          <button
+            type="submit"
+            className={`${shared.buttonPrimary} ${classes.submit}`}
+            disabled={status === "sending"}
+          >
+            {status === "sending" ? "Sending…" : "Send enquiry"}
           </button>
-          {sent && (
-            <p className={classes.note} role="status">
-              Your email app should open with your enquiry ready to send.
+          <p className={classes.note} role="status">
+            {status === "sent" &&
+              "Thank you — your enquiry is on its way. I'll be in touch soon."}
+            {status === "mailto" &&
+              "Your email app should open with your enquiry ready to send."}
+          </p>
+          {status === "error" && (
+            <p className={classes.error} role="alert">
+              Sorry, that didn&apos;t send. Please try again, or{" "}
+              <a href={buildMailto(values)}>email me directly</a>.
             </p>
           )}
         </div>
