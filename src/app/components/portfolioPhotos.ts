@@ -24,14 +24,32 @@ import pic21 from "../../../public/pic21.jpg";
 export const portfolioCategories = ["Bridal", "Occasion", "Natural"] as const;
 export type PortfolioCategory = (typeof portfolioCategories)[number];
 
-export type PortfolioPhoto = {
+export function isPortfolioCategory(value: string): value is PortfolioCategory {
+  return (portfolioCategories as readonly string[]).includes(value);
+}
+
+/** A photo as the gallery renders it, from either Sanity or the local files */
+export type GalleryPhoto = {
+  key: string;
+  src: StaticImageData | string;
+  alt: string;
+  category: PortfolioCategory;
+  /** Needed for remote (Sanity) images; local imports carry their own size */
+  width?: number;
+  height?: number;
+  /** Tiny blurred preview shown while a remote image loads */
+  blurDataURL?: string;
+};
+
+type LocalPhoto = {
   src: StaticImageData;
   alt: string;
   category: PortfolioCategory;
 };
 
-// Shown in this order (mixed so "All" isn't grouped by category)
-export const portfolioPhotos: PortfolioPhoto[] = [
+// Fallback gallery, used while the Sanity "Portfolio photos" list is empty.
+// Shown in this order (mixed so "All" isn't grouped by category).
+const localPhotos: LocalPhoto[] = [
   { src: pic15, alt: "Bride with veil and crystal tiara", category: "Bridal" },
   { src: pic17, alt: "Client with curly hair and bronzed glam", category: "Occasion" },
   { src: pic9, alt: "Client with rosy cheeks and bold brows", category: "Occasion" },
@@ -54,3 +72,8 @@ export const portfolioPhotos: PortfolioPhoto[] = [
   { src: pic16, alt: "Daniella applying a bride's makeup", category: "Bridal" },
   { src: pic21, alt: "Client with glowing skin and voluminous blow-dry", category: "Natural" },
 ];
+
+export const fallbackPhotos: GalleryPhoto[] = localPhotos.map((p) => ({
+  key: p.src.src,
+  ...p,
+}));

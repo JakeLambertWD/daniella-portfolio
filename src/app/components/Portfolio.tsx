@@ -7,25 +7,40 @@ import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import { socialLinks } from "@/utils/constants";
 import {
   portfolioCategories,
-  portfolioPhotos,
+  type GalleryPhoto,
   type PortfolioCategory,
 } from "./portfolioPhotos";
 import shared from "./shared.module.css";
 import classes from "./Portfolio.module.css";
 
 type Filter = "All" | PortfolioCategory;
+
+// Local imports carry their own size and blur; Sanity photos pass them in
+function imageProps(photo: GalleryPhoto) {
+  if (typeof photo.src !== "string") {
+    return { src: photo.src, placeholder: "blur" as const };
+  }
+  return {
+    src: photo.src,
+    width: photo.width,
+    height: photo.height,
+    ...(photo.blurDataURL
+      ? { placeholder: "blur" as const, blurDataURL: photo.blurDataURL }
+      : {}),
+  };
+}
 const filters: Filter[] = ["All", ...portfolioCategories];
 
-function Portfolio() {
+function Portfolio({ photos: allPhotos }: { photos: GalleryPhoto[] }) {
   const [filter, setFilter] = useState<Filter>("All");
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const photos = useMemo(
     () =>
       filter === "All"
-        ? portfolioPhotos
-        : portfolioPhotos.filter((p) => p.category === filter),
-    [filter]
+        ? allPhotos
+        : allPhotos.filter((p) => p.category === filter),
+    [filter, allPhotos]
   );
 
   const current = openIndex === null ? null : photos[openIndex];
@@ -71,17 +86,16 @@ function Portfolio() {
       <div className={classes.gallery}>
         {photos.map((photo, i) => (
           <button
-            key={photo.src.src}
+            key={photo.key}
             type="button"
             className={classes.tile}
             onClick={() => setOpenIndex(i)}
             aria-label={`Open photo: ${photo.alt}`}
           >
             <Image
-              src={photo.src}
+              {...imageProps(photo)}
               alt={photo.alt}
               sizes="(min-width: 1024px) 400px, 50vw"
-              placeholder="blur"
             />
           </button>
         ))}
@@ -118,11 +132,10 @@ function Portfolio() {
           <>
             <div className={classes.lightbox}>
               <Image
-                src={current.src}
+                {...imageProps(current)}
                 alt={current.alt}
                 className={classes.lightboxImage}
                 sizes="90vw"
-                placeholder="blur"
               />
               <button
                 type="button"
