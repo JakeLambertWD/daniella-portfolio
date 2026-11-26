@@ -1,0 +1,71 @@
+/* Building blocks reused across the redesigned sections */
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8a5a5a;
+}
+
+@media (min-width: 768px) {
+  .eyebrow {
+    font-size: 13px;
+    letter-spacing: 0.24em;
+  }
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 18px 32px;
+  border-radius: 999px;
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.buttonPrimary {
+  composes: button;
+  background: #2e2220;
+  color: #faf6f3;
+}
+
+.buttonPrimary:hover {
+  background: #8a5a5a;
+}
+
+.buttonOutline {
+  composes: button;
+  border: 1px solid #2e2220;
+  color: #2e2220;
+}
+
+.buttonOutline:hover {
+  background: #2e2220;
+  color: #faf6f3;
+}
+
+.textLink {
+  composes: button;
+  padding: 18px 8px;
+  color: #2e2220;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-color: #d8b6b6;
+}
+
+.textLink:hover {
+  color: #8a5a5a;
+}

@@ -1,50 +1,62 @@
-"use client";
-
-import { Box, Center, Flex, useMantineTheme } from "@mantine/core";
+import { Fragment } from "react";
 import Image from "next/image";
-import Motto from "./Motto";
-import MottoSmall from "./MottoSmall";
+import { contactSectionId } from "@/utils/constants";
+import heroPhoto from "../../../public/pic10.jpg";
+import shared from "./shared.module.css";
+import classes from "./Landing.module.css";
 
-function Landing(props: any) {
-  const theme = useMantineTheme();
+const categories = ["Bridal", "Bridal party", "Occasion glam", "Skin prep"];
 
+function Landing() {
   return (
-    <Box
-      id="landingPageId"
-      pos="relative"
-      ref={props.landingPageRef}
-      h={`calc(100vh - 120.5px)`}
-    >
-      <Flex
-        h={"100%"}
-        w={{ base: "100%", lg: "700px", xxl: "900px" }}
-        bg={theme.colors.persianPink[0]}
-        pos="absolute"
-        right={0}
-      ></Flex>
+    <>
+      <section id="landingPageId" className={`${shared.container} ${classes.hero}`}>
+        <div className={classes.copy}>
+          <p className={shared.eyebrow}>Bridal &amp; occasion makeup · London</p>
+          <h1 className={classes.title}>
+            Unveiling your <em>unique</em> beauty, with every stroke.
+          </h1>
+          <p className={classes.lede}>
+            Calm, considered makeup that looks like you on your best day — and
+            lasts from the first look to the last dance.
+          </p>
+          <div className={classes.actions}>
+            <a href={`#${contactSectionId}`} className={shared.buttonPrimary}>
+              Book a consultation
+            </a>
+            <a href="#portfolioId" className={shared.textLink}>
+              View portfolio
+            </a>
+          </div>
+        </div>
 
-      <Center
-        bg="white"
-        pos="absolute"
-        h={{ base: 260, xs: 320, sm: 450, lg: 500 }}
-        w={{ base: 360, xs: 440, sm: 620, lg: 700 }}
-        left={{ base: 0, lg: "2%", xl: "10%", xxl: "15%" }}
-        top={{ base: 0, md: "15%" }}
-        style={{ border: "10px #fff8ff solid" }}
-      >
-        <Image
-          src="/LandingPic.webp"
-          sizes="900px"
-          fill
-          style={{
-            objectFit: "contain",
-          }}
-          alt="Picture of the author"
-        />
-      </Center>
-      <Motto />
-      <MottoSmall />
-    </Box>
+        <div className={classes.media}>
+          <Image
+            src={heroPhoto}
+            alt="Bride with a pearl tiara and soft glam makeup, on a staircase"
+            className={classes.photo}
+            sizes="(min-width: 1024px) 600px, 100vw"
+            placeholder="blur"
+            priority
+          />
+        </div>
+      </section>
+
+      <div className={classes.strip}>
+        <div className={classes.stripInner}>
+          {categories.map((category, i) => (
+            <Fragment key={category}>
+              {i > 0 && (
+                <span className={classes.star} aria-hidden="true">
+                  ✦
+                </span>
+              )}
+              <span>{category}</span>
+            </Fragment>
+          ))}
+        </div>
+      </div>
+    </>
   );
 }
 

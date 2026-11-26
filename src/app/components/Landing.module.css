@@ -1,0 +1,166 @@
+.hero {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  align-items: center;
+  gap: 40px;
+  padding: 28px 0 56px;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    flex-wrap: wrap;
+    gap: 64px;
+    padding: 64px 12px 96px;
+  }
+}
+
+/* Text column */
+.copy {
+  flex: 1 1 460px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  animation: fadeUp 0.9s ease both;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(44px, 6.4vw, 88px);
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  color: #2e2220;
+}
+
+.title em {
+  color: #8a5a5a;
+}
+
+.lede {
+  margin: 0;
+  max-width: 480px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #5e504c;
+}
+
+@media (min-width: 768px) {
+  .copy {
+    gap: 28px;
+  }
+  .lede {
+    font-size: 18px;
+  }
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+/* Image column: arched photo over a blush shape */
+.media {
+  flex: 1 1 420px;
+  min-width: 0;
+  position: relative;
+  padding: 0 0 24px 24px;
+  animation: fadeIn 1.2s ease both;
+}
+
+@media (min-width: 768px) {
+  .media {
+    padding: 0 0 40px 40px;
+  }
+}
+
+.media::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 78%;
+  height: 82%;
+  background: #d8b6b6;
+  border-radius: 240px 240px 0 0;
+}
+
+.photo {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 280px 280px 0 0;
+}
+
+/* Category strip */
+.strip {
+  border-top: 1px solid #eadfda;
+  border-bottom: 1px solid #eadfda;
+}
+
+.stripInner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 16px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 16px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 20px;
+  color: #5e504c;
+}
+
+@media (min-width: 768px) {
+  .stripInner {
+    padding: 24px 12px;
+    font-size: 26px;
+  }
+}
+
+.star {
+  color: #d8b6b6;
+  font-style: normal;
+}
+
+/* Decorative stars only fit on wider screens */
+@media (max-width: 767px) {
+  .star {
+    display: none;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .copy,
+  .media {
+    animation: none;
+  }
+}
