@@ -1,0 +1,102 @@
+.about {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+  padding: 72px 0;
+}
+
+@media (min-width: 768px) {
+  .about {
+    gap: 80px;
+    padding: 128px 12px;
+  }
+}
+
+.media {
+  flex: 1 1 380px;
+  min-width: 0;
+  position: relative;
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+/* Floating stat card overlapping the photo */
+.stat {
+  position: absolute;
+  right: 16px;
+  bottom: 24px;
+  background: #faf6f3;
+  padding: 16px 22px;
+  box-shadow: 0 20px 40px rgba(46, 34, 32, 0.08);
+}
+
+@media (min-width: 1024px) {
+  .stat {
+    right: -24px;
+    bottom: 40px;
+    padding: 20px 28px;
+  }
+}
+
+.statValue {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 36px;
+  line-height: 1;
+}
+
+.statLabel {
+  margin: 6px 0 0;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6b5e5a;
+}
+
+.copy {
+  flex: 1 1 460px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(38px, 4.4vw, 56px);
+  line-height: 1.08;
+  color: #2e2220;
+}
+
+.body {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #5e504c;
+}
+
+@media (min-width: 768px) {
+  .copy {
+    gap: 24px;
+  }
+  .body {
+    font-size: 17px;
+  }
+}
+
+.signature {
+  margin: 8px 0 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 34px;
+  color: #8a5a5a;
+}
