@@ -40,7 +40,7 @@ function Stars({ rating }: { rating: number }) {
 
 function Reviews() {
   return (
-    <section id="reviewsId" className={`${shared.fullBleed} ${classes.section}`}>
+    <section id="reviewsId" className={classes.section}>
       <div className={`${shared.container} ${classes.inner}`}>
         <figure className={classes.featured}>
           <p className={classes.label}>Kind words</p>

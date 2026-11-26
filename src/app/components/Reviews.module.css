@@ -21,7 +21,6 @@
 @media (min-width: 768px) {
   .inner {
     gap: 64px;
-    padding: 0 12px;
   }
 }
 

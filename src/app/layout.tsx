@@ -27,23 +27,11 @@ export default function RootLayout({
     <html lang="en" className={`${displayFont.variable} ${bodyFont.variable}`}>
       <head>
         <ColorSchemeScript forceColorScheme="light" />
-        <style>
-          {/* // TODO: incase i want to remove the padding on small screens */}
-          {/* {`
-            @media (max-width: 500px) {
-              .responsive {
-                padding: 0 !important;
-              }
-            }
-          `} */}
-        </style>
       </head>
       <body className={bodyFont.className}>
         <MantineProvider theme={theme} forceColorScheme="light">
           <Header />
-          <div className="responsive" style={{ padding: "0px 20px 0 20px" }}>
-            {children}
-          </div>
+          <main>{children}</main>
           <Footer />
         </MantineProvider>
       </body>

@@ -1,8 +1,17 @@
 /* Building blocks reused across the redesigned sections */
 
+/* Centred content column with the page's side spacing */
 .container {
-  max-width: 1280px;
+  max-width: 1344px; /* 1280px content + 32px each side */
   margin: 0 auto;
+  padding-inline: 20px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: 32px;
+  }
 }
 
 .eyebrow {
@@ -68,12 +77,6 @@
 
 .textLink:hover {
   color: #8a5a5a;
-}
-
-/* Stretch a section's background past the layout's 20px side padding */
-.fullBleed {
-  margin-inline: -20px;
-  padding-inline: 20px;
 }
 
 .sectionTitle {

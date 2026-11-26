@@ -61,7 +61,7 @@ export const services: Service[] = [
 
 function Services() {
   return (
-    <section id="servicesId" className={`${shared.fullBleed} ${classes.section}`}>
+    <section id="servicesId" className={classes.section}>
       <div className={`${shared.container} ${classes.inner}`}>
         <div className={classes.intro}>
           <div className={classes.introHeading}>

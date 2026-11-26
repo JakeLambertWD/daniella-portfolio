@@ -9,8 +9,9 @@
 }
 
 .inner {
-  max-width: 1280px;
+  max-width: 1344px;
   margin: 0 auto;
+  box-sizing: border-box;
   padding: 16px 20px;
   display: flex;
   align-items: center;

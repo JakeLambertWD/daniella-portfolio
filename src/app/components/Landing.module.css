@@ -3,14 +3,14 @@
   flex-wrap: wrap-reverse;
   align-items: center;
   gap: 40px;
-  padding: 28px 0 56px;
+  padding-block: 28px 56px;
 }
 
 @media (min-width: 768px) {
   .hero {
     flex-wrap: wrap;
     gap: 64px;
-    padding: 64px 12px 96px;
+    padding-block: 64px 96px;
   }
 }
 
@@ -106,9 +106,10 @@
 }
 
 .stripInner {
-  max-width: 1280px;
+  max-width: 1344px;
   margin: 0 auto;
-  padding: 16px 0;
+  padding: 16px 20px;
+  box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -121,7 +122,7 @@
 
 @media (min-width: 768px) {
   .stripInner {
-    padding: 24px 12px;
+    padding: 24px 32px;
     font-size: 26px;
   }
 }
