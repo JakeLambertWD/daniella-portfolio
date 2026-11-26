@@ -4,6 +4,7 @@ import "@mantine/core/styles.css";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import FeedbackButton from "./components/FeedbackButton";
 import { bodyFont, displayFont } from "./fonts";
 import { theme } from "./theme";
 
@@ -33,6 +34,7 @@ export default function RootLayout({
           <Header />
           <main>{children}</main>
           <Footer />
+          <FeedbackButton />
         </MantineProvider>
       </body>
     </html>

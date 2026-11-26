@@ -1,0 +1,173 @@
+.fab {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 150;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 18px 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: #2e2220;
+  color: #faf6f3;
+  font: inherit;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  box-shadow: 0 10px 30px rgba(46, 34, 32, 0.25);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.fab:hover {
+  background: #8a5a5a;
+  transform: translateY(-1px);
+}
+
+.fab:focus-visible {
+  outline: 2px solid #8a5a5a;
+  outline-offset: 3px;
+}
+
+@media (min-width: 768px) {
+  .fab {
+    right: 24px;
+    bottom: 24px;
+  }
+}
+
+/* Modal content */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 400;
+  color: #2e2220;
+}
+
+.kinds {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.kind {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  border: 1px solid #cdbab5;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.kind input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.kind:has(input:checked) {
+  border-color: #2e2220;
+  background: #f3e9e6;
+}
+
+.kind:has(input:focus-visible) {
+  outline: 2px solid #8a5a5a;
+  outline-offset: 2px;
+}
+
+.kindName {
+  font-size: 16px;
+  font-weight: 500;
+  color: #2e2220;
+}
+
+.kindHint {
+  font-size: 13px;
+  color: #6b5e5a;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #6b5e5a;
+}
+
+.input {
+  font: inherit;
+  font-size: 16px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #2e2220;
+  border: 1px solid #cdbab5;
+  border-radius: 0;
+  padding: 12px 14px;
+  background: #ffffff;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #2e2220;
+}
+
+textarea.input {
+  resize: vertical;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.submit {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.error {
+  margin: 0;
+  font-size: 14px;
+  color: #a33a3a;
+}
+
+.done {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #5e504c;
+}
