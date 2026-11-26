@@ -1,0 +1,118 @@
+.section {
+  background: #2e2220;
+  color: #faf6f3;
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-top: 128px;
+    padding-bottom: 128px;
+  }
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+@media (min-width: 768px) {
+  .inner {
+    gap: 64px;
+    padding: 0 12px;
+  }
+}
+
+.label {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #d8b6b6;
+}
+
+@media (min-width: 768px) {
+  .label {
+    font-size: 13px;
+    letter-spacing: 0.24em;
+  }
+}
+
+/* Featured quote */
+.featured {
+  margin: 0;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.featuredQuote {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(28px, 3.6vw, 48px);
+  line-height: 1.25;
+}
+
+.attribution {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #d8b6b6;
+}
+
+@media (min-width: 768px) {
+  .attribution {
+    font-size: 14px;
+  }
+}
+
+/* Review cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    gap: 24px;
+  }
+}
+
+.card {
+  margin: 0;
+  padding: 28px;
+  border: 1px solid rgba(216, 182, 182, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .card {
+    padding: 36px;
+  }
+}
+
+.stars {
+  margin: 0;
+  color: #d8b6b6;
+  letter-spacing: 4px;
+}
+
+.cardQuote {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #eadfda;
+}
+
+@media (min-width: 768px) {
+  .cardQuote {
+    font-size: 17px;
+  }
+}
