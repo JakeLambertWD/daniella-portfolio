@@ -1,166 +1,153 @@
 "use client";
 
-import { Image, Stack, useMantineTheme } from "@mantine/core";
-import Heading from "./Heading";
+import { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
+import { Modal } from "@mantine/core";
+import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
+import { socialLinks } from "@/utils/constants";
+import {
+  portfolioCategories,
+  portfolioPhotos,
+  type PortfolioCategory,
+} from "./portfolioPhotos";
+import shared from "./shared.module.css";
+import classes from "./Portfolio.module.css";
 
-function Portfolio(props: any) {
-  const theme = useMantineTheme();
+type Filter = "All" | PortfolioCategory;
+const filters: Filter[] = ["All", ...portfolioCategories];
 
-  // TODO: import images from instagram??
-  // TODO: decrease padding between images on small screens
-  // TODO: add hover effect to images
-  // TODO: add modal to images
-  // https://www.w3schools.com/howto/howto_css_image_overlay.asp
-  // TODO: add lazy loading to images
-  // TODO: add infinite scroll to images
-  // TODO: reduce column count on small screens
-  // TODO: Split gallery into a grid with sub sections for each category
-  // TODO: Discuss with her, does she want pics displayed from insta or from her phone?
+function Portfolio() {
+  const [filter, setFilter] = useState<Filter>("All");
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const photos = useMemo(
+    () =>
+      filter === "All"
+        ? portfolioPhotos
+        : portfolioPhotos.filter((p) => p.category === filter),
+    [filter]
+  );
+
+  const current = openIndex === null ? null : photos[openIndex];
+  const showPrev = () =>
+    setOpenIndex((i) => (i === null ? i : (i - 1 + photos.length) % photos.length));
+  const showNext = () =>
+    setOpenIndex((i) => (i === null ? i : (i + 1) % photos.length));
+
+  // Arrow keys move through the lightbox while it is open
+  useEffect(() => {
+    if (openIndex === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") showPrev();
+      if (e.key === "ArrowRight") showNext();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [openIndex, photos.length]);
 
   return (
-    <Stack
-      id="portfolioId"
-      ref={props.portfolioRef}
-      align="center"
-      mb={20}
-      bg={theme.colors.persianPink[0]}
-    >
-      <Heading title="PORTFOLIO" />
+    <section id="portfolioId" className={`${shared.container} ${classes.section}`}>
+      <div className={classes.intro}>
+        <div className={classes.introHeading}>
+          <p className={shared.eyebrow}>Portfolio</p>
+          <h2 className={shared.sectionTitle}>Recent work</h2>
+        </div>
+        <div role="group" aria-label="Filter portfolio" className={classes.filters}>
+          {filters.map((f) => (
+            <button
+              key={f}
+              type="button"
+              className={classes.filter}
+              aria-pressed={filter === f}
+              onClick={() => setFilter(f)}
+            >
+              {f}
+            </button>
+          ))}
+        </div>
+      </div>
 
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          overflow: "auto",
-          height: "800px",
-          borderTop: "8px solid #fff8ff",
-          borderBottom: "8px solid #fff8ff",
-          padding: "0 4px 8px 4px",
-          maxWidth: "1200px",
-          background: "#fff8ff",
-          marginBottom: "70px",
-          marginRight: "20px",
-          marginLeft: "20px",
-          scrollbarWidth: "none",
+      <div className={classes.gallery}>
+        {photos.map((photo, i) => (
+          <button
+            key={photo.src.src}
+            type="button"
+            className={classes.tile}
+            onClick={() => setOpenIndex(i)}
+            aria-label={`Open photo: ${photo.alt}`}
+          >
+            <Image
+              src={photo.src}
+              alt={photo.alt}
+              sizes="(min-width: 1024px) 400px, 50vw"
+              placeholder="blur"
+            />
+          </button>
+        ))}
+      </div>
+
+      {socialLinks.instagram && (
+        <div className={classes.more}>
+          <a
+            href={socialLinks.instagram}
+            className={shared.buttonOutline}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            See more on Instagram
+          </a>
+        </div>
+      )}
+
+      <Modal
+        opened={current !== null}
+        onClose={() => setOpenIndex(null)}
+        size="min(1100px, 94vw)"
+        centered
+        title={current?.alt}
+        overlayProps={{ backgroundOpacity: 0.85, color: "#2E2220", blur: 4 }}
+        styles={{
+          content: { background: "transparent", boxShadow: "none" },
+          header: { background: "transparent", color: "#FAF6F3" },
+          title: { fontSize: 14, letterSpacing: "0.06em" },
+          close: { color: "#FAF6F3" },
         }}
       >
-        <div style={{ flex: "33.3%", maxWidth: "33.3%", padding: "0 4px" }}>
-          <Image
-            src="/pic15.jpg"
-            alt="alt"
-            style={{ width: "100%", verticalAlign: "middle" }}
-          />
-          <Image
-            src="/pic1.jpg"
-            alt="alt"
-            style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }}
-          />
-          <Image
-            src="/pic3.jpg"
-            alt="alt"
-            style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }}
-          />
-          <Image
-            src="/pic2.jpg"
-            alt="alt"
-            style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }}
-          />
-          <Image
-            src="/pic4.jpg"
-            alt="alt"
-            style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }}
-          />
-          <Image
-            src="/pic20.jpg"
-            alt="alt"
-            style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }}
-          />
-          <Image
-            src="/pic13.jpg"
-            alt="alt"
-            style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }}
-          />
-        </div>
-
-        <div style={{ flex: "33.3%", maxWidth: "33.3%", padding: "0 4px" }}>
-          <Image
-            src="/pic5.jpg"
-            alt="alt"
-            style={{ width: "100%", verticalAlign: "middle" }}
-          />
-          <Image
-            src="/pic6.jpg"
-            alt="alt"
-            style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }}
-          />
-          <Image
-            src="/pic7.jpg"
-            alt="alt"
-            style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }}
-          />
-          <Image
-            src="/pic8.jpg"
-            alt="alt"
-            style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }}
-          />
-          <Image
-            src="/pic19.jpg"
-            alt="alt"
-            style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }}
-          />
-          <Image
-            src="/pic14.jpg"
-            alt="alt"
-            style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }}
-          />
-          <Image
-            src="/pic16.jpg"
-            alt="alt"
-            style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }}
-          />
-        </div>
-
-        <div style={{ flex: "33.3%", maxWidth: "33.3%", padding: "0 4px" }}>
-          <Image
-            src="/pic10.jpg"
-            alt="alt"
-            style={{ width: "100%", verticalAlign: "middle" }}
-          />
-          <Image
-            src="/pic9.jpg"
-            alt="alt"
-            style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }}
-          />
-          <Image
-            src="/pic11.jpg"
-            alt="alt"
-            style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }}
-          />
-          <Image
-            src="/pic12.jpg"
-            alt="alt"
-            style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }}
-          />
-          <Image
-            src="/pic18.jpg"
-            alt="alt"
-            style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }}
-          />
-          <Image
-            src="/pic17.jpg"
-            alt="alt"
-            style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }}
-          />
-          <Image
-            src="/pic21.jpg"
-            alt="alt"
-            style={{ width: "100%", marginTop: "8px", verticalAlign: "middle" }}
-          />
-        </div>
-
-        <div style={{ flex: "25%", maxWidth: "25%", padding: "0 4px" }}></div>
-      </div>
-    </Stack>
+        {current && openIndex !== null && (
+          <>
+            <div className={classes.lightbox}>
+              <Image
+                src={current.src}
+                alt={current.alt}
+                className={classes.lightboxImage}
+                sizes="90vw"
+                placeholder="blur"
+              />
+              <button
+                type="button"
+                className={`${classes.navButton} ${classes.prev}`}
+                onClick={showPrev}
+                aria-label="Previous photo"
+              >
+                <IconChevronLeft size={24} stroke={1.5} />
+              </button>
+              <button
+                type="button"
+                className={`${classes.navButton} ${classes.next}`}
+                onClick={showNext}
+                aria-label="Next photo"
+              >
+                <IconChevronRight size={24} stroke={1.5} />
+              </button>
+            </div>
+            <p className={classes.counter}>
+              {openIndex + 1} / {photos.length}
+            </p>
+          </>
+        )}
+      </Modal>
+    </section>
   );
 }
 

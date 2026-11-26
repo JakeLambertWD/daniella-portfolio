@@ -1,0 +1,169 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 72px 0;
+}
+
+@media (min-width: 768px) {
+  .section {
+    gap: 48px;
+    padding: 128px 12px;
+  }
+}
+
+.intro {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.introHeading {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Filter pills */
+.filters {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.filter {
+  flex: none;
+  min-height: 44px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 1px solid #cdbab5;
+  background: transparent;
+  color: #2e2220;
+  font: inherit;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.filter:hover {
+  border-color: #2e2220;
+}
+
+.filter[aria-pressed="true"] {
+  background: #2e2220;
+  border-color: #2e2220;
+  color: #faf6f3;
+}
+
+/* Masonry gallery */
+.gallery {
+  columns: 2;
+  column-gap: 8px;
+}
+
+@media (min-width: 768px) {
+  .gallery {
+    columns: 300px 3;
+    column-gap: 20px;
+  }
+}
+
+.tile {
+  display: block;
+  width: 100%;
+  margin: 0 0 8px;
+  padding: 0;
+  border: 0;
+  background: none;
+  break-inside: avoid;
+  overflow: hidden;
+  cursor: zoom-in;
+}
+
+@media (min-width: 768px) {
+  .tile {
+    margin-bottom: 20px;
+  }
+}
+
+.tile img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition:
+    transform 0.6s ease,
+    opacity 0.3s ease;
+}
+
+.tile:hover img {
+  transform: scale(1.03);
+  opacity: 0.92;
+}
+
+.tile:focus-visible {
+  outline: 2px solid #8a5a5a;
+  outline-offset: 3px;
+}
+
+.more {
+  display: flex;
+  justify-content: center;
+}
+
+/* Lightbox */
+.lightbox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100dvh - 120px);
+}
+
+.lightboxImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(250, 246, 243, 0.4);
+  background: rgba(46, 34, 32, 0.5);
+  color: #faf6f3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.navButton:hover {
+  background: rgba(46, 34, 32, 0.8);
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
+
+.counter {
+  margin: 12px 0 0;
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: #eadfda;
+}

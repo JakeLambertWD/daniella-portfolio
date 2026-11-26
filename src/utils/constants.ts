@@ -20,3 +20,10 @@ export const navigationLinks = [
 ];
 
 export const contactSectionId = "contactMeId";
+
+// TODO: Add Daniella's profile URLs. Links and buttons that use these stay
+// hidden until they are set.
+export const socialLinks: { instagram: string | null; facebook: string | null } = {
+  instagram: null,
+  facebook: null,
+};
