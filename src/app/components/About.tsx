@@ -1,5 +1,5 @@
 import Image from "next/image";
-import portrait from "../../../public/dan1.jpg";
+import portrait from "../../../public/daniella-portrait.jpg";
 import shared from "./shared.module.css";
 import classes from "./About.module.css";
 
@@ -12,9 +12,9 @@ function About() {
       <div className={classes.media}>
         <Image
           src={portrait}
-          alt="Daniella standing at an open window overlooking Venice"
+          alt="Portrait of Daniella smiling, in a black blazer"
           className={classes.photo}
-          sizes="(min-width: 1024px) 560px, 100vw"
+          sizes="(min-width: 480px) 440px, 100vw"
           placeholder="blur"
         />
         {yearsOfExperience !== null && (
