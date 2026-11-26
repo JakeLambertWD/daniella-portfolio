@@ -1,0 +1,137 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250, 246, 243, 0.86);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid #eadfda;
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .inner {
+    padding: 20px 32px;
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #2e2220;
+  text-decoration: none;
+}
+
+.monogram {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #2e2220;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 22px;
+  letter-spacing: 0.02em;
+}
+
+@media (min-width: 768px) {
+  .monogram {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+  }
+  .name {
+    font-size: 24px;
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.link {
+  position: relative;
+  padding: 6px 0;
+  color: #2e2220;
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: #d8b6b6;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.link:hover::after,
+.link[aria-current="true"]::after {
+  transform: scaleX(1);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #2e2220;
+  color: #faf6f3;
+  text-decoration: none;
+  padding: 14px 24px;
+  border-radius: 999px;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: background 0.2s ease;
+}
+
+.cta:hover {
+  background: #8a5a5a;
+}
+
+/* Mobile drawer */
+.drawerNav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px 0;
+}
+
+.drawerLink {
+  font-family: var(--font-display);
+  font-size: 40px;
+  line-height: 1.3;
+  color: #2e2220;
+  text-decoration: none;
+}
+
+.drawerLink[aria-current="true"] {
+  font-style: italic;
+  color: #8a5a5a;
+}

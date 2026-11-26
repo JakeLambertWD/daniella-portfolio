@@ -1,0 +1,14 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #faf6f3;
+  color: #2e2220;
+  font-weight: 300;
+}
+
+/* Keep anchored sections clear of the sticky header */
+[id] {
+  scroll-margin-top: 96px;
+}

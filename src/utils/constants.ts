@@ -1,7 +1,22 @@
+// Design tokens from the redesign style guide
+export const colors = {
+  ivory: "#FAF6F3", // page background
+  shell: "#F3E9E6", // alternate section background
+  blush: "#D8B6B6", // accents, decorative shapes
+  rosewood: "#8A5A5A", // eyebrow labels, highlighted words
+  taupe: "#5E504C", // body copy
+  muted: "#6B5E5A", // secondary text
+  espresso: "#2E2220", // headings, buttons
+  line: "#EADFDA", // hairline dividers
+  border: "#CDBAB5", // input and outline borders
+};
+
+// Section ids double as in-page anchors (#aboutId, ...)
 export const navigationLinks = [
-  { href: "aboutId", label: "Bio" },
-  { href: "reviewsId", label: "Reviews" },
-  { href: "servicesId", label: "Services" },
-  { href: "portfolioId", label: "Portfolio" },
-  { href: "contactMeId", label: "Contact" },
+  { id: "aboutId", label: "About" },
+  { id: "servicesId", label: "Services" },
+  { id: "portfolioId", label: "Portfolio" },
+  { id: "reviewsId", label: "Reviews" },
 ];
+
+export const contactSectionId = "contactMeId";

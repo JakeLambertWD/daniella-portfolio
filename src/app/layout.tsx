@@ -1,65 +1,18 @@
 import type { Metadata } from "next";
-import {
-  ColorSchemeScript,
-  createTheme,
-  MantineProvider,
-  CSSVariablesResolver,
-  Modal,
-} from "@mantine/core";
-import "@mantine/carousel/styles.css";
-import { Roboto_Condensed } from "next/font/google";
+import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
-import SocialMediaLinks from "./SocialMediaLinks";
+import "@mantine/carousel/styles.css";
+import "./globals.css";
+import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { bodyFont, displayFont } from "./fonts";
+import { theme } from "./theme";
 
 // TODO: Send her an invitation link. Once clicked, she will be greeted with fireworks and a happy birthday message and a click to enter Modal that will take her to the main page.
 // TODO: greet her with a romantic message and a pic of me blowing her a kiss
 // TODO: take colors from coolers.co with named colors - persian pink & carolina blue
 // TODO: Add Framer Motion animations
 
-export const theme = createTheme({
-  /** Put your mantine theme override here */
-  white: "#fff8ff",
-  black: "#212121",
-
-  breakpoints: {
-    xs: "480px",
-    sm: "768px",
-    md: "1024px",
-    lg: "1184px",
-    xl: "1440px",
-    xxl: "1680px",
-  },
-
-  colors: {
-    persianPink: [
-      "#d8b6b6",
-      "#000000",
-      "#000000",
-      "#000000",
-      "#000000",
-      "#000000",
-      "#000000",
-      "#000000",
-      "#000000",
-      "#000000",
-    ],
-    carolinaBlue: [
-      "#56A3A6",
-      "#000000",
-      "#000000",
-      "#000000",
-      "#000000",
-      "#000000",
-      "#000000",
-      "#000000",
-      "#000000",
-      "#000000",
-    ],
-  },
-});
-
-const montserrat = Roboto_Condensed({ subsets: ["greek"], weight: ["400"] });
 
 export const metadata: Metadata = {
   title: "Daniella Makeup",
@@ -72,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${displayFont.variable} ${bodyFont.variable}`}>
       <head>
         <ColorSchemeScript forceColorScheme="light" />
         <style>
@@ -86,11 +39,10 @@ export default function RootLayout({
           `} */}
         </style>
       </head>
-      <body className={montserrat.className}>
+      <body className={bodyFont.className}>
         <MantineProvider theme={theme} forceColorScheme="light">
-          {/* <NavigationBar /> */}
+          <Header />
           <div className="responsive" style={{ padding: "0px 20px 0 20px" }}>
-            <SocialMediaLinks />
             {children}
           </div>
           <Footer />
